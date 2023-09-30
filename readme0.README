@@ -1,0 +1,14 @@
+========================================Creating a new branch and pushing from local to remote=============================================
+Create a project repo in the git.
+
+Configure the git in the local using below commands:
+    git config --global user.email "mytheeswaran93@gmail.com"
+    git config --global user.name "Mytheeswaran"
+
+
+Add the git repo to local so that the changes are comitted from local to the remote using the below commands:
+    git add .
+    git commit -m 'tsconfig webpack babel packagejson configs'
+    git remote add https://github.com/Mytheeswaran/react-webpack-typescript
+    git fetch
+    git push --set-upstream https://github.com/Mytheeswaran/react-webpack-typescript master

@@ -1,0 +1,26 @@
+1. CSS files configurations:
+    Webpack throws the below error when a new .css file is added in the proj. We need to tell webpack to user these specific loaders to process
+    css files:
+        Error: You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.
+
+    a. Install style-loader and css-loader packages as dev dependencies using command:
+        yarn add -D style-loader css-loader
+
+    b. Add style-loader css-loader in webpack config file as rules with use:[] attribute.
+
+2. PNG files configurations:
+    a. Importing files with .png extensions, typerscript compiler would throw error
+    Error: Cannot find module './react.png' or its corresponding type declarations.ts(2307)
+        To eliminate the above error we need to create a typings declarations file and add declare module '*.png'
+
+    b. Webpack loader error for png files
+    Error: You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.
+        Need to add loaders (like file-loader in Webpack4) to process .png type files, but in webpack5 we have support of loaders by default for
+        these type of files and just need to add new rule in webpack.config file with type: 'asset/resource' attribute rather than loader:''
+
+3. SVG file configurations:
+    a. Webpack loader error for svg files
+    Error: You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.
+        Inorder to process .svg type files need to add new rule in webpack.config file with type: 'asset/inline' attribute
+
+
