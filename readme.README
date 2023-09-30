@@ -1,0 +1,55 @@
+1. Inititalise git repo using command: git init
+    Add .gitignore file
+
+2. Add src and build folders
+    src contains the code of the application
+    build folder contains the artifacts of the bundled code (built application) for deployment 
+
+3. Create a package.json file using command: npm init --y
+
+4. Create an index.html inside src folder
+    Add a <div id="root"></div> element injecting root id
+
+5. Add react and react-dom dependencies using command: yarn add react react-dom
+    Note that "dependencies" attribute will be added to package.json
+
+6. Till now we can write code only in .js, to enable the support of typescript, install typescript, ts for react and ts for react-dom using command: yarn add -D typescript @types/react @types/react-dom
+    -D is only for dev dependencies
+    Note that "devDependencies" attribute will be added to package.json
+
+7. Add a tsconfig.json file which includes configurations for ts compiler
+    "compilerOptions" are focused on type checking and not on code transpilation
+    comments inline in the file
+
+8. Create entry file and root comp (index.tsx and App.tsx respectively)
+    index.tsx - import ReactDOM from "react-dom", which renders the root component using ReactDOM.render(<App/>, document.getElementById('root'))
+
+9. Install Babel: The react and ts code will not be understood by the browser, so install babel to transpile them to .js files
+    Install the below dev dependencies using command:
+        yarn add -D @babel/core 
+            @babel/preset-env 
+            @babel/preset-react 
+            @babel/preset-typescript
+
+10. Create .babelrc (babel configuration) file which includes all the preset for babel.
+
+11. Install Webpack and its dependencies (as dev dependencies), which bundles all the components and references it in index.html file
+    yarn add -D webpack 
+        webpack-cli 
+        webpack-dev-server 
+        html-webpack-plugin
+
+12. Apart from these deps, we need babel-loader (as dev dependency) package which transpiles ts to js using babel and webpack 
+    yarn add -D babel-loader
+
+13. Add webpack.config.js inside webpack directory and copy the contents from git - https://github.com/gopinav/React-TypeScript-Webpack-Starter/blob/master/webpack/webpack.common.js
+    comments inline in the file
+
+14. Add npm script to run our app
+    "start": "webpack serve --config webpack/webpack.config.js --open" - the --open opens our app in the browser automatically
+    command: yarn start
+
+================================================Troubleshooting error========================================
+Error: Cannot find package '@babel/plugin-transform-runtime' imported from D:\React\react-webpack-typescript\babel-virtual-resolve-base.js
+Resolution: yarn add @babel/plugin-transform-runtime
+
