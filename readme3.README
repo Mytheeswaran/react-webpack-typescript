@@ -1,0 +1,30 @@
+=======================================Setting Environments in the Webpack config===============================
+
+1. Maintain the following file structures:
+    webpack.common.js
+    webpack.dev.js
+    webpack.prod.js
+    webpack.config.js
+
+2. Install webpack-merge (as dev dependency) to merge webpack.common.js with dev/prod files
+    command: yarn add -D  webpack-merge
+
+3. Specify the attributes in dev.js
+    a. In the webpack.config.js file, instead of exporting an object, we are exporting a function, that takes envVars as args, which gets populated
+    by the webpack CLI (webpack serve --config webpack/webpack.config.js --env env=dev --open)
+
+    b. --env env=dev in the above injects the env = dev value in args of the func in .config.js file, which dynamically picks the reqd dev/prod file and merges it with
+    common config using merge()
+
+4. Setting new environment variables using webpack:
+    Need a plugin - webpack.DefinePlugin, which takes object as arg and specify key value pair ['process.env.name': JSON.stringify('Mythee-Prod')]
+
+5. Run a build file as production code
+    a. yard build (webpack --config webpack/webpack.config.js --env env=prod)
+    b. The built bundle.js will be now available inside build folder
+    c. Navigate to build folder - cd build
+    d. command: npx serve
+    e. Hit the url from the server 
+    f. compare the bundle.js file size of dev and prod versions
+
+

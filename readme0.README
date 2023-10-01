@@ -12,3 +12,9 @@ Add the git repo to local so that the changes are comitted from local to the rem
     git remote add https://github.com/Mytheeswaran/react-webpack-typescript
     git fetch
     git push --set-upstream https://github.com/Mytheeswaran/react-webpack-typescript master
+
+========================================module.exports vs export in webpack.config.js=======================================================
+SyntaxError: Unexpected token 'export'
+    NodeJS versions prior to v14.13.0 do not support ESM (export keyword syntax) and use CommonJS Modules (module.exports property syntax). 
+    NodeJS v14.13.0 and newer supports ESM but it must be enabled first.
+    Refer: https://stackoverflow.com/questions/38296667/getting-unexpected-token-export
