@@ -1,0 +1,24 @@
+============================================Linting with ES-Lint=====================================================
+
+Add core library command: yarn add -D eslint
+
+Eslint for React: Add additional libraries to support react - command:
+    yarn add -D eslint-plugin-react
+    yarn add -D eslint-plugin-react-hooks
+
+Eslint for typescript: 
+    yarn add -D @typescript-eslint/parser
+    yarn add -D @typescript-eslint/eslint-plugin
+
+Create an eslint configuration file to add rules:
+    file contents copied from: https://github.com/gopinav/React-TypeScript-Webpack-Starter/blob/master/.eslintrc.js
+
+Eslint for imports
+    yarn add -D eslint-plugin-import -- supports linting of ES6+ imports and exports syntax and prevents issues from mispelling of file paths
+    yarn add -D eslint-plugin-jsx-a11y -- adds accessibility standards in real time
+
+Install Eslint for VS code plugin for tool
+
+Add lint script in package.json file
+    eslint --fix \".src/**/*.{js,jsx,ts,tsx,json}\"  - hightlight the errors specifically in the files with .js, etc
+

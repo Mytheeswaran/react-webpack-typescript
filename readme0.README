@@ -18,3 +18,7 @@ SyntaxError: Unexpected token 'export'
     NodeJS versions prior to v14.13.0 do not support ESM (export keyword syntax) and use CommonJS Modules (module.exports property syntax). 
     NodeJS v14.13.0 and newer supports ESM but it must be enabled first.
     Refer: https://stackoverflow.com/questions/38296667/getting-unexpected-token-export
+
+========================================session: 4 - react-refresh with webpack=============================================================
+
+Refer session: https://www.youtube.com/watch?v=xKQ2rEoYmXw&list=PLC3y8-rFHvwiWPS2RO3BKotLRfgg_8WEo&index=4&ab_channel=Codevolution

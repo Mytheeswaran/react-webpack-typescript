@@ -1,8 +1,10 @@
+import React,{useState} from 'react';
 import './styles.css';
 import reactImage from  './react.png';
 import atomSvg from './atom.svg';
 
 export const App = ()=>{
+    const a  = 0;
     return(
         <>
             <h1>React App with Webpack and TS - {process.env.NODE_ENV} - {process.env.name}</h1>
