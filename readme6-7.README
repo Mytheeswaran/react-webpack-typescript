@@ -1,0 +1,36 @@
+===========================================session 6: Code formatting with Prettier========================================
+
+Install prettier plugin in VS code
+
+Add core prettier dependency as Dev dep:
+    yarn add -D prettier
+
+Add additional dependencies of prettier with eslint
+    yarn add -D eslint-config-prettier - disables eslint rules that might conflict with prettier formatting
+    yarn add -D eslint-plugin-prettier - runs prettier as eslint rule
+
+Create .prettierrc.js file to add configurations for prettier
+    copy from https://github.com/gopinav/React-TypeScript-Webpack-Starter/blob/master/.prettierrc.js
+
+Add the below values in extends property in .eslintrc.js config file
+    'prettier',
+    'plugin:prettier/recommended'
+
+Add npm script for prettier formatting in package.json
+    "format": prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"
+
+Prettier on Autosave - Change the settings of prettier to prettify during file saving using 
+    ctrl+, -> type formatonsave -> check the checkbox
+
+If the autosave prettier doesnt work, follow the below steps:
+    ctrl+shift+P -> Format Document -> configure/select Prettier - Code formatter
+
+==============session 7: Restrict GIT from pushing code to repo during lint and prettier errors===============================
+
+Add the dev deps:
+    yarn add -D husky@4 lint-staged
+
+Add "husky" and "lint-staged" configs in package.json
+    husky prevents code from pushing to the GIT during pre-commit phase
+
+Refer: https://www.youtube.com/watch?v=8b0OfT0vBsU&list=PLC3y8-rFHvwiWPS2RO3BKotLRfgg_8WEo&index=7&ab_channel=Codevolution

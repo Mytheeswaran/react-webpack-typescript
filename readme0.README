@@ -22,3 +22,11 @@ SyntaxError: Unexpected token 'export'
 ========================================session: 4 - react-refresh with webpack=============================================================
 
 Refer session: https://www.youtube.com/watch?v=xKQ2rEoYmXw&list=PLC3y8-rFHvwiWPS2RO3BKotLRfgg_8WEo&index=4&ab_channel=Codevolution
+
+========================================session: 8 - Nice to have dependencies==============================================================
+
+yarn add -D @babel/runtime @babel/plugin-transform-runtime
+yarn add -D copy-webpack-plugin ---> Copy static assets to build folder
+yarn add -D webpack-bundle-analyser ---> helps to analyse size of the bundle created.
+
+Refer session: https://www.youtube.com/watch?v=q-s7Frzf1fM&list=PLC3y8-rFHvwiWPS2RO3BKotLRfgg_8WEo&index=8&ab_channel=Codevolution
