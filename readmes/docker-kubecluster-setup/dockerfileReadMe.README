@@ -9,9 +9,9 @@
 
     Container result: 
         $ webpack serve --config webpack/webpack.config.js --env env=dev --open
-        <i> [webpack-dev-server] Project is running at:
-        <i> [webpack-dev-server] Loopback: http://localhost:8080/
-        <i> [webpack-dev-server] On Your Network (IPv4): http://172.17.0.2:8080/
+        [webpack-dev-server] Project is running at:
+        [webpack-dev-server] Loopback: http://localhost:8080/
+        [webpack-dev-server] On Your Network (IPv4): http://172.17.0.2:8080/
 
     My laptop IP configs:
         Wireless LAN adapter Wi-Fi:
