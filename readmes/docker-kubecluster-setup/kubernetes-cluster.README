@@ -1,0 +1,64 @@
+=====================================================Setup minikube======================================================
+
+1. Install minikube - https://minikube.sigs.k8s.io/docs/start/
+    Download the application and rename it to minikube.exe
+    Install the .exe by running it
+    Set minikube.exe location (C:\Program Files\Kubernetes\Minikube) to a new path variable
+    cmd promt -> command: minikube version
+
+2. Set container runtime to minikube (we use docker as container runtime)
+    command: minikube start --driver=docker
+
+        * minikube v1.31.2 on Microsoft Windows 10 Home Single Language 10.0.19045.3448 Build 19045.3448
+        * Using the docker driver based on user configuration
+        * Using Docker Desktop driver with root privileges
+        * Starting control plane node minikube in cluster minikube
+        * Pulling base image ...
+        * Downloading Kubernetes v1.27.4 preload ...
+            > preloaded-images-k8s-v18-v1...:  393.21 MiB / 393.21 MiB  100.00% 10.01 M
+            > gcr.io/k8s-minikube/kicbase...:  447.62 MiB / 447.62 MiB  100.00% 10.19 M
+        * Creating docker container (CPUs=2, Memory=2200MB) ...
+        * Preparing Kubernetes v1.27.4 on Docker 24.0.4 ...
+        - Generating certificates and keys ...
+        - Booting up control plane ...
+        - Configuring RBAC rules ...
+        * Configuring bridge CNI (Container Networking Interface) ...
+        * Verifying Kubernetes components...
+        - Using image gcr.io/k8s-minikube/storage-provisioner:v5
+        * Enabled addons: storage-provisioner, default-storageclass
+
+        ! C:\Program Files\Docker\Docker\resources\bin\kubectl.exe is version 1.25.9, which may have incompatibilities with Kubernetes 1.27.4.
+        - Want kubectl v1.27.4? Try 'minikube kubectl -- get pods -A'
+        * Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+3. check minikube status:
+    command: minikube status
+
+        minikube
+        type: Control Plane
+        host: Running
+        kubelet: Running
+        apiserver: Running
+        kubeconfig: Configured
+
+=====================================================Setup kubectl======================================================
+
+1. Install kubectl application - https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+
+2. Set kubectl.exe location (C:\Program Files\Kubernetes\Kubectl) to a new path variable
+
+3. cmd promt -> command: kubectl version
+
+4. Check the kubenetes cluster setup by minikube
+    command: kubectl cluster-info
+        Kubernetes control plane is running at https://127.0.0.1:54574
+        CoreDNS is running at https://127.0.0.1:54574/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+5. Check the node setup inside the cluster by minikube
+    comand: kubectl get node
+        NAME       STATUS   ROLES           AGE     VERSION
+        minikube   Ready    control-plane   2m23s   v1.27.4
+
+================================Link(s) referred=============================
+
+https://www.youtube.com/watch?v=xhxmExC9N1U&ab_channel=JavaTechie
