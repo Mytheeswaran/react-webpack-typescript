@@ -1,0 +1,158 @@
+=============================================Deployment using kubectl=====================================
+
+1. Open cmd prompt and head on to the working dir of the project repo - D:\React\react-webpack-typescript> --> this is because of the below reasons
+
+    a. VS code was not able to output the last line of the command: minikube docker-env result
+
+    b. When providing permissions to the minikube to access docker repo, it should be done from the proj working directory as 
+    the permission will be applied to the proj repo as well. If the permissions given from C:/ directory, only C:/ dir will be having 
+    permissions to push/pull images to the docker repo.This will result in creation of empty deployments without pods - (error: Availability: 0 --> kubectl get deployment)
+
+2. Allow kubernetes to read docker repository:
+    
+    a. Need to tell minikube that it will be using docker repo to create, store and access images
+
+        command: minikube docker-env
+
+            SET DOCKER_TLS_VERIFY=1
+            SET DOCKER_HOST=tcp://127.0.0.1:58664
+            SET DOCKER_CERT_PATH=C:\Users\user\.minikube\certs
+            SET MINIKUBE_ACTIVE_DOCKERD=minikube
+            REM To point your shell to minikube's docker-daemon, run:
+            REM @FOR /f "tokens=*" %i IN ('minikube -p minikube docker-env --shell cmd') DO @%i
+
+3. copy the last line of the command result and hit enter in cmd prompt
+
+    D:\React\react-webpack-typescript>@FOR /f "tokens=*" %i IN ('minikube -p minikube docker-env --shell cmd') DO @%i
+
+    (now, the minikube has access to read and write images from and to docker repo)
+
+4. Check list of docker images present before creating a deployment
+
+    D:\React\react-webpack-typescript>docker images
+        REPOSITORY                                TAG       IMAGE ID       CREATED         SIZE
+        registry.k8s.io/kube-apiserver            v1.27.4   e7972205b661   2 months ago    121MB
+        registry.k8s.io/kube-scheduler            v1.27.4   98ef2570f3cd   2 months ago    58.4MB
+        registry.k8s.io/kube-controller-manager   v1.27.4   f466468864b7   2 months ago    113MB
+        registry.k8s.io/kube-proxy                v1.27.4   6848d7eda034   2 months ago    71.1MB
+        registry.k8s.io/coredns/coredns           v1.10.1   ead0a4a53df8   8 months ago    53.6MB
+        registry.k8s.io/etcd                      3.5.7-0   86b6af7dd652   8 months ago    296MB
+        registry.k8s.io/pause                     3.9       e6f181688397   12 months ago   744kB
+        gcr.io/k8s-minikube/storage-provisioner   v5        6e38f40d628d   2 years ago     31.5MB
+
+5. Create a docker image:
+
+    D:\React\react-webpack-typescript>docker build -f Dockerfile -t webpack-container:v0.2 .
+
+6. Check list of docker images after creating deployment
+
+    D:\React\react-webpack-typescript>docker images
+        REPOSITORY                                TAG       IMAGE ID       CREATED          SIZE
+        webpack-container                         v0.2      b688301dfb2d   39 seconds ago   464MB
+        registry.k8s.io/kube-apiserver            v1.27.4   e7972205b661   2 months ago     121MB
+        registry.k8s.io/kube-controller-manager   v1.27.4   f466468864b7   2 months ago     113MB
+        registry.k8s.io/kube-scheduler            v1.27.4   98ef2570f3cd   2 months ago     58.4MB
+        registry.k8s.io/kube-proxy                v1.27.4   6848d7eda034   2 months ago     71.1MB
+        registry.k8s.io/coredns/coredns           v1.10.1   ead0a4a53df8   8 months ago     53.6MB
+        registry.k8s.io/etcd                      3.5.7-0   86b6af7dd652   8 months ago     296MB
+        registry.k8s.io/pause                     3.9       e6f181688397   12 months ago    744kB
+        gcr.io/k8s-minikube/storage-provisioner   v5        6e38f40d628d   2 years ago      31.5MB
+
+7. Create deployment using the below command: kubectl create deployment <deployment-name> --image=<from-image-name>:<image-tag> --port=<container-port-number>
+
+    D:\React\react-webpack-typescript>kubectl create deployment webpack-pod-deployment --image=webpack-container:v0.2 --port=8080
+
+8. Check deployment status and verify if AVAILABLE is 1
+
+    D:\React\react-webpack-typescript>kubectl get deployment
+        NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+        webpack-pod-deployment   1/1     1            1           23s
+
+9. Describe deployment to check the details of pods, replicas
+
+    D:\React\react-webpack-typescript>kubectl describe deployment webpack-pod-deployment
+
+        Name:                   webpack-pod-deployment
+        Namespace:              default
+        CreationTimestamp:      Mon, 09 Oct 2023 23:38:27 +0100
+        Labels:                 app=webpack-pod-deployment
+        Annotations:            deployment.kubernetes.io/revision: 1
+        Selector:               app=webpack-pod-deployment
+        Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+        StrategyType:           RollingUpdate
+        MinReadySeconds:        0
+        RollingUpdateStrategy:  25% max unavailable, 25% max surge
+        Pod Template:
+        Labels:  app=webpack-pod-deployment
+        Containers:
+        webpack-container:
+            Image:        webpack-container:v0.2
+            Port:         8080/TCP
+            Host Port:    0/TCP
+            Environment:  <none>
+            Mounts:       <none>
+        Volumes:        <none>
+        Conditions:
+        Type           Status  Reason
+        ----           ------  ------
+        Available      True    MinimumReplicasAvailable
+        Progressing    True    NewReplicaSetAvailable
+        OldReplicaSets:  <none>
+        NewReplicaSet:   webpack-pod-deployment-596d5864b5 (1/1 replicas created)
+        Events:
+        Type    Reason             Age   From                   Message
+        ----    ------             ----  ----                   -------
+        Normal  ScalingReplicaSet  65s   deployment-controller  Scaled up replica set webpack-pod-deployment-596d5864b5 to 1
+
+10. Check pods in the deployment
+
+    D:\React\react-webpack-typescript>kubectl get pods
+
+        NAME                                      READY   STATUS    RESTARTS   AGE
+        webpack-pod-deployment-596d5864b5-44g5r   1/1     Running   0          2m16s
+
+11. Check pod's logs
+
+    D:\React\react-webpack-typescript>kubectl logs webpack-pod-deployment-596d5864b5-44g5r
+
+        yarn run v1.22.18
+        $ webpack serve --config webpack/webpack.config.js --env env=dev --open
+        <i> [webpack-dev-server] Project is running at:
+        <i> [webpack-dev-server] Loopback: http://localhost:8080/
+        <i> [webpack-dev-server] On Your Network (IPv4): http://10.244.0.7:8080/
+        <i> [webpack-dev-server] Content not from webpack is served from '/app/public' directory
+        (node:28) ExperimentalWarning: The Fetch API is an experimental feature. This feature could change at any time
+        (Use `node --trace-warnings ...` to show where the warning was created)
+
+============================================================Service using kubectl==========================================================
+
+1. Expose the deployment to create a new service- command: kubectl expose deployment <deployment-name> --type=<service-type>
+
+    D:\React\react-webpack-typescript>kubectl expose deployment webpack-pod-deployment --type=NodePort
+    service/webpack-pod-deployment exposed
+
+2. Check the created service
+
+    D:\React\react-webpack-typescript>kubectl get service
+
+        NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+        kubernetes               ClusterIP   10.96.0.1        <none>        443/TCP          66m
+        webpack-pod-deployment   NodePort    10.105.184.235   <none>        8080:31046/TCP   16s
+
+3. Get the proxy url/service url from minikube so that we can hit the url from the browser to see the result
+
+    command: minikube service <service-name> --url
+
+    D:\React\react-webpack-typescript>minikube service webpack-pod-deployment --url
+
+        http://127.0.0.1:58777
+        ! Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+
+4. Hit the url from the browser: http://127.0.0.1:58777 (this is the Kubernetes control plane IP)
+
+=====================================================Minikube dashboard==========================================================
+
+1. Command: minikube dashboard
+
+2. copy the url and hit it in chrome
+

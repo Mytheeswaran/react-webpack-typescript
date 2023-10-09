@@ -49,7 +49,7 @@
 
 3. cmd promt -> command: kubectl version
 
-4. Check the kubenetes cluster setup by minikube
+4. Check the kubernetes cluster setup by minikube
     command: kubectl cluster-info
         Kubernetes control plane is running at https://127.0.0.1:54574
         CoreDNS is running at https://127.0.0.1:54574/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
@@ -58,6 +58,29 @@
     comand: kubectl get node
         NAME       STATUS   ROLES           AGE     VERSION
         minikube   Ready    control-plane   2m23s   v1.27.4
+
+============================Restart minikube if laptop is put down/ minikube container stops running==========================
+
+1. command: minikube start
+
+    * minikube v1.31.2 on Microsoft Windows 10 Home Single Language 10.0.19045.3448 Build 19045.3448
+    * Using the docker driver based on existing profile
+    * Starting control plane node minikube in cluster minikube
+    * Pulling base image ...
+    * Restarting existing docker container for "minikube" ...
+    * Preparing Kubernetes v1.27.4 on Docker 24.0.4 ...
+    * Configuring bridge CNI (Container Networking Interface) ...
+    * Verifying Kubernetes components...
+    - Using image gcr.io/k8s-minikube/storage-provisioner:v5
+    * Enabled addons: storage-provisioner, default-storageclass
+
+    ! C:\Program Files\Docker\Docker\resources\bin\kubectl.exe is version 1.25.9, which may have incompatibilities with Kubernetes 1.27.4.
+    - Want kubectl v1.27.4? Try 'minikube kubectl -- get pods -A'
+    * Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+Note: 
+    a. command: minikube stop - to stop the minikube containers during shutdown
+    b. command: minikube delete - Deletes a local Kubernetes cluster
 
 ================================Link(s) referred=============================
 
