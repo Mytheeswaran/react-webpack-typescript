@@ -47,7 +47,7 @@
 
 2. Set kubectl.exe location (C:\Program Files\Kubernetes\Kubectl) to a new path variable
 
-3. cmd promt -> command: kubectl version
+3. cmd prompt -> command: kubectl version
 
 4. Check the kubernetes cluster setup by minikube
     command: kubectl cluster-info

@@ -139,7 +139,7 @@
         kubernetes               ClusterIP   10.96.0.1        <none>        443/TCP          66m
         webpack-pod-deployment   NodePort    10.105.184.235   <none>        8080:31046/TCP   16s
 
-3. Get the proxy url/service url from minikube so that we can hit the url from the browser to see the result
+3. Get the proxy url/service url from minikube (minikube tunneling) so that we can hit the url from the browser to see the result
 
     command: minikube service <service-name> --url
 
