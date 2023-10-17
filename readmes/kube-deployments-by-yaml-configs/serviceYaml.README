@@ -1,0 +1,182 @@
+=======================================================service.yaml file config values======================================
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: webpack-ts-service
+spec:
+    selector:
+        app: webpack-ts-pod
+    ports:
+        - protocol: "TCP"
+        port: 8081
+        targetPort: 8081
+        nodePort:31001 [NodePorts are in the 30000-32767 range by default]
+    type: NodePort
+
+=======================================================service created using kubectl===========================================
+
+D:\React\react-webpack-typescript\kubectl-deployments-yaml>kubectl apply -f service.yaml
+service/webpack-ts-service created
+
+D:\React\react-webpack-typescript\kubectl-deployments-yaml>kubectl get service
+    NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+    kubernetes           ClusterIP   10.96.0.1    <none>        443/TCP          15m
+    webpack-ts-service   NodePort    10.97.34.4   <none>        8081:31001/TCP   11s
+
+D:\React\react-webpack-typescript\kubectl-deployments-yaml>kubectl describe service webpack-ts-service
+    Name:                     webpack-ts-service
+    Namespace:                default
+    Labels:                   <none>
+    Annotations:              <none>
+    Selector:                 app=webpack-ts-pod
+    Type:                     NodePort
+    IP Family Policy:         SingleStack
+    IP Families:              IPv4
+    IP:                       10.97.34.4
+    IPs:                      10.97.34.4
+    Port:                     <unset>  8081/TCP
+    TargetPort:               8081/TCP
+    NodePort:                 <unset>  31001/TCP
+    Endpoints:                10.244.0.4:8081,10.244.0.5:8081
+    Session Affinity:         None
+    External Traffic Policy:  Cluster
+    Events:                   <none>
+
+==================================================Tunneling by Minikube to access the Nodeport service======================
+
+D:\React\react-webpack-typescript\kubectl-deployments-yaml>minikube service webpack-ts-service --url
+    http://127.0.0.1:59166
+
+! Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+
+C:\Users\user>curl http://127.0.0.1:59166
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React App using Webpack TS</title>
+    <script defer src="bundle.js"></script></head>
+    <body>
+        <div id="root"></div>
+    </body>
+    </html>
+    C:\Users\user>
+
+============================Accessing the pods using Node (Minikube node) - Not working need to check============================
+
+D:\React\react-webpack-typescript\kubectl-deployments-yaml>kubectl get nodes -o wide
+    NAME       STATUS   ROLES           AGE   VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION                      CONTAINER-RUNTIME
+    minikube   Ready    control-plane   27m   v1.27.4   192.168.49.2   <none>        Ubuntu 22.04.2 LTS   5.15.90.1-microsoft-standard-WSL2   docker://24.0.4
+
+                                            (or)
+
+D:\React\react-webpack-typescript\kubectl-deployments-yaml>minikube IP
+192.168.49.2
+
+Try curl -> http://<minikube-node-ip>:<node-port>
+    command: curl http://192.168.49.2:31001
+
+Reference: https://www.youtube.com/watch?v=7o7e8OAAWyg&list=PLVz2XdJiJQxybsyOxK7WFtteH42ayn5i9&index=8&ab_channel=JavaTechie
+
+
+=============================Chat GPT answers for how networking works in NodeIP service type=============
+
+1. Is node IP as same as minikube IP in a nodeport type service kubernetes cluster?
+
+Ans: 
+
+    In a Kubernetes cluster running with Minikube, the node IP and the Minikube IP might not be the same, 
+    especially when using a NodePort type service.
+
+    Minikube creates a single-node Kubernetes cluster locally and runs the cluster inside a virtual machine (VM). 
+    The Minikube IP refers to the IP address of the virtual machine that hosts the Kubernetes cluster.
+
+    On the other hand, the node IP represents the IP address of each individual node in the Kubernetes cluster, 
+    where each node is a worker machine that runs pods.
+
+    When you create a NodePort type service in Minikube, it exposes the service on a static port on each node's IP. 
+    You can access the service using the Minikube IP along with the static port. 
+    The traffic to the service will be routed to the appropriate pod through the respective node's IP.
+
+    Therefore, the Minikube IP and the node IP may not be the same when using a NodePort type service in a Minikube cluster. 
+    The Minikube IP is for accessing the cluster itself while the node IP is used for accessing services on individual nodes.
+
+2. Does creating new deployments or pods in kubernetes cluster with service type nodeport, uses minikube control plane node itself?
+
+Ans:
+    When creating new deployments or pods in a Kubernetes cluster with a service type of NodePort, it does not necessarily mean that 
+    it uses the mini `kubectl` control plane node itself. 
+
+    In Kubernetes, the `NodePort` service type exposes the service on a static port on each node in the cluster and maps that port to the port 
+    specified in the service. This allows external access to the service by using the node IP and the static port. 
+
+    When a new deployment or pod is created, Kubernetes automatically assigns it to a node in the cluster based on the resource availability 
+    and the scheduling algorithm. Once the pod is scheduled to a node, it can be accessed using the node IP and the static NodePort specified in the service.
+
+    Therefore, creating new deployments or pods with a `NodePort` service type does not rely on the control plane node itself but 
+    rather on the nodes where the pods are running. The `kubectl` control plane node is responsible for managing the cluster's resources, 
+    scheduling pods, and coordinating container deployments, but it is not directly involved in the actual traffic routing and service access.
+
+=========================================================================Quick glance======================================
+
+Kubernetes control plane is running at https://127.0.0.1:56663
+--------------------------------------------------------------------------------
+
+minikube IP or kubectl get nodes -o wide
+	NAME       STATUS   ROLES           AGE    VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION                      CONTAINER-RUNTIME
+	minikube   Ready    control-plane   102s   v1.27.4   192.168.49.2   <none>        Ubuntu 22.04.2 LTS   5.15.90.1-microsoft-standard-WSL2   docker://24.0.4
+--------------------------------------------------------------------------------
+
+deployment.yaml
+
+	pod 1 
+	  Node:             minikube/192.168.49.2
+	  Labels:           app=webpack-ts-pod
+						pod-template-hash=86f4c6f65f
+	  IP:               10.244.0.4
+	
+	pod 2
+	  Node:             minikube/192.168.49.2
+	  Labels:           app=webpack-ts-pod
+						pod-template-hash=86f4c6f65f
+	  IP:               10.244.0.5
+--------------------------------------------------------------------------------
+	  
+D:\React\react-webpack-typescript\kubectl-deployments-yaml>kubectl get service
+    NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+    kubernetes           ClusterIP   10.96.0.1    <none>        443/TCP          15m
+    webpack-ts-service   NodePort    10.97.34.4   <none>        8081:31001/TCP   11s
+	
+	    Name:                     webpack-ts-service
+		Namespace:                default
+		Labels:                   <none>
+		Annotations:              <none>
+		Selector:                 app=webpack-ts-pod
+		Type:                     NodePort
+		IP Family Policy:         SingleStack
+		IP Families:              IPv4
+		IP:                       10.97.34.4
+		IPs:                      10.97.34.4
+		Port:                     <unset>  8081/TCP
+		TargetPort:               8081/TCP
+		NodePort:                 <unset>  31001/TCP
+		Endpoints:                10.244.0.4:8081,10.244.0.5:8081
+--------------------------------------------------------------------------------
+	
+minikube tunneling (working)
+
+	D:\React\react-webpack-typescript\kubectl-deployments-yaml>minikube service webpack-ts-service --url
+	
+		http://127.0.0.1:59166
+--------------------------------------------------------------------------------
+minikube IP:nodePort (not working)
+	
+NAME       STATUS   ROLES           AGE   VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION                      CONTAINER-RUNTIME
+minikube   Ready    control-plane   27m   v1.27.4   192.168.49.2   <none>        Ubuntu 22.04.2 LTS   5.15.90.1-microsoft-standard-WSL2   docker://24.0.4
+	
+D:\React\react-webpack-typescript\kubectl-deployments-yaml>minikube ip 
+	192.168.49.2
+	
+	curl http://192.168.49.2:31001

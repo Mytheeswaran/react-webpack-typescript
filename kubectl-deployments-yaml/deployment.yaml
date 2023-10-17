@@ -17,4 +17,4 @@ spec:
           image: webpack-ts-image-test:0.4
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8080
+            - containerPort: 8081

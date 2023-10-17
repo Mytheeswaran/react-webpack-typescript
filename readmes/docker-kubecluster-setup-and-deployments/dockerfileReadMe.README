@@ -1,5 +1,5 @@
 1. Build a docker image with dockerfile config
-    Command: docker build -f Dockerfile -t webpack-container:v0.1 .
+    Command: docker build -f Dockerfile -t webpack-ts-image-test:0.4 .
 
     Error: The engine "node" is incompatible with this module. Expected version "^16.0.0 || >=18.0.0". Got "13.12.0"
         changed FROM node:13.12.0-alpine to FROM node:18.0.0-alpine
