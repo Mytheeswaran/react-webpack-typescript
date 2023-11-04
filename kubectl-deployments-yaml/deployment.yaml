@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webpack-ts-deployment
+  name: webpack-ts-deployment-v1
 spec:
   selector:
     matchLabels:
-      app: webpack-ts-pod
+      app: webpack-ts-pod-v1
   replicas: 2
   template:
     metadata:
       labels:
-        app: webpack-ts-pod
+        app: webpack-ts-pod-v1
     spec:
       containers:
         - name: webpack-ts-container
           image: webpack-ts-image-test:0.4
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8081
+            - containerPort: 8080

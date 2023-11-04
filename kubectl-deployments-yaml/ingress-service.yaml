@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webpack-ts-ingress-service
+spec:
+  selector:
+    app: webpack-ts-pod-v1
+  ports:
+    - port: 80
