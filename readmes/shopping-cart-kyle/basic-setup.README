@@ -1,0 +1,22 @@
+
+1. npm i react-router-dom bootstrap react-bootstrap
+2. import 'bootstrap/dist/css/bootstrap.min.css' - Apply bootstrap to whole app
+
+
+Error: React-router-dom error with webpack dev server
+    routing to /store or /about was leading to cannot get /store error in react
+        Cannot Get/URL on Refresh | React Reach Router | Handing 404 Pages | historyApiFallback
+        https://www.youtube.com/watch?v=EDJW88iVORA
+
+        historyApiFallback: true,
+
+------old code---App.tsx-------
+    <>
+      <h1>
+        React App with Webpack and TS - {process.env.NODE_ENV} -{' '}
+        {process.env.name}
+      </h1>
+      <img src={reactImage} alt="React Logo" width="300" height="200" />
+      <img src={atomSvg} alt="React atom svg" width="300" />
+    </>
+-------------------------------

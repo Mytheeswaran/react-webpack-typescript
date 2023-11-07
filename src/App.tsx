@@ -1,17 +1,20 @@
 import React from 'react'
 import './styles.css'
-import reactImage from './react.png'
-import atomSvg from './atom.svg'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Routes, Route } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
+import { Home } from './pages/Home'
+import { Store } from './pages/Store'
+import { About } from './pages/About'
 
 export const App = () => {
   return (
-    <>
-      <h1>
-        React App with Webpack and TS - {process.env.NODE_ENV} -{' '}
-        {process.env.name}
-      </h1>
-      <img src={reactImage} alt="React Logo" width="300" height="200" />
-      <img src={atomSvg} alt="React atom svg" width="300" />
-    </>
+    <Container>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Container>
   )
 }

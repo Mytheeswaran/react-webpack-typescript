@@ -6,6 +6,7 @@ module.exports = {
   devServer: {
     hot: true,
     open: true, // similar to cmd in webpack cli: webpack serve --config webpack/webpack.config.js --env env=dev --open
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.DefinePlugin({
