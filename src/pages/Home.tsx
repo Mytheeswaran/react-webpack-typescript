@@ -1,3 +1,5 @@
-export function Home() {
+import React from 'react'
+
+export function Home(): JSX.Element {
   return <>Home</>
 }

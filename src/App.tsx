@@ -7,7 +7,7 @@ import { Home } from './pages/Home'
 import { Store } from './pages/Store'
 import { About } from './pages/About'
 
-export const App = () => {
+export const App = (): JSX.Element => {
   return (
     <Container>
       <Routes>

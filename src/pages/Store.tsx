@@ -1,3 +1,3 @@
-export function Store() {
+export function Store(): JSX.Element {
   return <>Store</>
 }
