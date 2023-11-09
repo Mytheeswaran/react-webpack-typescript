@@ -1,0 +1,13 @@
+=========================================================Navbar component==========================================
+
+Links referred:
+
+    1. Tips to write tests for a navbar.
+        https://stackoverflow.com/questions/74159939/how-to-test-react-bootstrap-navdropdown-with-react-testing-library
+        
+    2. https://testing-library.com/docs/queries/bytestid/
+
+    3. Error: useLocation() may be used only in the context of a <Router> component. (file: navbar.test.tsx)
+        Navbars are associated with BrowserRouters. As a result, while testing the navbars also, import import { BrowserRouter } from 'react-router-dom'
+        and wrap the navbar inside it.
+        https://bobbyhadz.com/blog/react-uselocation-may-be-used-only-in-context-of-router
