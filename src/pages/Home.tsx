@@ -1,5 +1,5 @@
 import React from 'react'
 
 export function Home(): JSX.Element {
-  return <>Home</>
+  return <div role="home">Home-Page</div>
 }

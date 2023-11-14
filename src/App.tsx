@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import { Routes, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import { Home } from './pages/Home'

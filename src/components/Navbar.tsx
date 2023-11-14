@@ -10,13 +10,13 @@ export function Navbar(): JSX.Element {
     >
       <Container>
         <Nav className="me-auto" data-testid="navbar-link-container">
-          <Nav.Link to="/" as={NavLink}>
+          <Nav.Link to="/" as={NavLink} role="home-link-test">
             Home
           </Nav.Link>
-          <Nav.Link to="/store" as={NavLink}>
+          <Nav.Link to="/store" as={NavLink} role="store-link-test">
             Store
           </Nav.Link>
-          <Nav.Link to="/about" as={NavLink}>
+          <Nav.Link to="/about" as={NavLink} role="about-link-test">
             About
           </Nav.Link>
         </Nav>

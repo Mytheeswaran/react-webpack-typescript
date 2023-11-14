@@ -1,3 +1,3 @@
 export function About(): JSX.Element {
-  return <>About</>
+  return <>About-Page</>
 }

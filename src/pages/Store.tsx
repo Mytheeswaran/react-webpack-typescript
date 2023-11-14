@@ -1,3 +1,3 @@
 export function Store(): JSX.Element {
-  return <>Store</>
+  return <>Store-Page</>
 }
