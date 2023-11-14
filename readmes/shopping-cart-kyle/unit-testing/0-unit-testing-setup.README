@@ -1,4 +1,4 @@
-Link referred: 
+Link(s) referred: 
     Set up: https://dev.to/thelandolorien/how-to-setup-a-react-app-with-typescript-webpack-from-scratch-19cd
     jest official configs: https://jestjs.io/docs/configuration
 
@@ -27,3 +27,16 @@ Link referred:
     "test:coverage": "jest --coverage"
 
 6. Run command: npm run test
+-------------------------------------------------------------------------------------------------------------------
+
+Error: error importing css files in jest env - SyntaxError: Unexpected token {
+
+    fix: 
+        a. npm install --save-dev identity-obj-proxy 
+        b. Need to add the below attribute in jest.config.js:
+            moduleNameMapper: {
+                '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+                '<rootDir>/__mocks__/fileMock.js',
+                '\\.(css|less)$': 'identity-obj-proxy',
+            },
+    url ref(s): https://github.com/jestjs/jest/issues/3094 and https://jestjs.io/docs/webpack

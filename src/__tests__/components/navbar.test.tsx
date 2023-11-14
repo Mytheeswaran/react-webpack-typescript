@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event'
 // import { Navbar } from '../../components/Navbar'
 import '../../styles.css'
 import { App } from '../../App'
-
 import { BrowserRouter } from 'react-router-dom'
 
 test('renders navbar component', async () => {
@@ -12,6 +11,7 @@ test('renders navbar component', async () => {
       <App />
     </BrowserRouter>
   )
+
   expect(screen.getByTestId('navbar-wrapper')).toBeInTheDocument()
   expect(screen.getByTestId('navbar-link-container')).toBeInTheDocument()
   expect(screen.getByTestId('navbar-cart-button')).toBeInTheDocument()

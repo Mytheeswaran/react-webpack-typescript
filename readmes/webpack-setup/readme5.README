@@ -21,8 +21,13 @@ Install Eslint for VS code plugin for tool
 
 Add lint script in package.json file
     eslint --fix \".src/**/*.{js,jsx,ts,tsx,json}\"  - hightlight the errors specifically in the files with .js, etc
+----------------------------------------------------------------------------------------------------------------------
 
 Error: Elements with ARIA roles must use a valid, non-abstract ARIA role.Eslint
     Error popped out while using role attribute in elements for jest unit testing
     fix: just comment out 'plugin:jsx-a11y/recommended' in eslintrc.js file
+
+Error: (Warning): Using exported name 'userEvent' as identifier for default export.eslintimport/no-named-as-default
+    fix: Add 'import/no-named-as-default': 0 to the rules in eslintrc.js file 
+    link reffered: https://stackoverflow.com/questions/44437203/how-do-i-resolve-eslint-import-no-named-as-default
 
