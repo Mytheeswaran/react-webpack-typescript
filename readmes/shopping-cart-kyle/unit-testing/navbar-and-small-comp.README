@@ -11,3 +11,6 @@ Links referred:
         Navbars are associated with BrowserRouters. As a result, while testing the navbars also, import import { BrowserRouter } from 'react-router-dom'
         and wrap the navbar inside it.
         https://bobbyhadz.com/blog/react-uselocation-may-be-used-only-in-context-of-router
+
+    4. Test url path in a Navbar component, when clicking every link
+        https://stackoverflow.com/questions/50977862/how-to-test-url-change-with-jest
