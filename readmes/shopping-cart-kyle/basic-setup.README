@@ -1,6 +1,7 @@
 
 1. npm i react-router-dom bootstrap react-bootstrap
 2. import 'bootstrap/dist/css/bootstrap.min.css' - Apply bootstrap to whole app
+3. The images and static files are place in public folder outside src
 
 
 Error: React-router-dom error with webpack dev server
