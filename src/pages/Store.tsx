@@ -10,7 +10,7 @@ export function Store(): JSX.Element {
         {storeItems.map((item) => {
           return (
             <Col key={item.id}>
-              <StoreItem {...item} />
+              <StoreItem {...item} data-testid="store-item-card" />
             </Col>
           )
         })}

@@ -54,3 +54,9 @@ export function Navbar(): JSX.Element {
     </NavbarBs>
   )
 }
+
+{
+  /* 
+    For the reason why we use 1.5 rem comparitively to the parent/global style rem, refer Kyle video
+  */
+}
