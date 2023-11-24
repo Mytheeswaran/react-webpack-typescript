@@ -9,6 +9,6 @@ export function formatCurrency(number: number): string {
 
 {
   /* 
-    The undefined in the first arg of Intl.NumberFormat(), automatically determine how to printout number based on where you live
+    The undefined in the first arg of Intl.NumberFormat(), automatically determines how to printout number based on where you live
   */
 }

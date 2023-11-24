@@ -5,7 +5,7 @@ test('renders store item component with details', () => {
   const storeItemMock: StoreItemProps = {
     id: 1,
     name: 'banana',
-    price: 23,
+    price: 14000,
     imgUrl: '/imgs/banana.jpg',
   }
 
@@ -14,5 +14,9 @@ test('renders store item component with details', () => {
   expect(screen.getByTestId('store-item-card')).toBeInTheDocument
   expect(screen.getByTestId('store-item-card-image')).toBeInTheDocument
   expect(screen.getByText('banana')).toBeInTheDocument
-  expect(screen.getByText('23')).toBeInTheDocument
+  // expect(screen.getByTestId('add-to-cart-button')).toBeInTheDocument
+  expect(screen.getByTestId('decrement-cart-button')).toBeInTheDocument
+  expect(screen.getByTestId('cart-quantity-value')).toHaveTextContent('1')
+  expect(screen.getByTestId('increment-cart-button')).toBeInTheDocument
+  expect(screen.getByTestId('remove-from-cart-button')).toBeInTheDocument
 })
