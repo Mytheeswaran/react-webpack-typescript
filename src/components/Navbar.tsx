@@ -20,8 +20,19 @@ export function Navbar(): JSX.Element {
             About
           </Nav.Link>
         </Nav>
+
+        <Nav data-testid="navbar-link-container">
+          <Nav.Link to="/login" as={NavLink} role="login-link-test">
+            Login
+          </Nav.Link>
+        </Nav>
+
         <Button
-          style={{ width: '3rem', height: '3rem', position: 'relative' }}
+          style={{
+            width: '3rem',
+            height: '3rem',
+            position: 'relative',
+          }}
           variant="outline-primary"
           className="rounded-circle"
           data-testid="navbar-cart-button"
@@ -57,8 +68,7 @@ export function Navbar(): JSX.Element {
 
 {
   /* 
-    For the reason why we use 1.5 rem comparitively to the parent/global style rem, refer Kyle video
+    1. For the reason why we use 1.5 rem comparitively to the parent/global style rem, refer Kyle video
+    2. Check className="me-auto" for Login right positioning
   */
 }
-
-// testing push for new branch

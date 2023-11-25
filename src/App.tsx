@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap'
 import { Home } from './pages/Home'
 import { Store } from './pages/Store'
 import { About } from './pages/About'
+import { Login } from './pages/Login'
 import { Navbar } from './components/Navbar'
 import { ShoppingCartProvider } from './context/ShoppingCartContext'
 
@@ -18,6 +19,7 @@ export const App = (): JSX.Element => {
           <Route path="/" element={<Home />} />
           <Route path="/store" element={<Store />} />
           <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Container>
     </ShoppingCartProvider>
