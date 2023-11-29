@@ -1,5 +1,6 @@
 import { Button, Card } from 'react-bootstrap'
 import { formatCurrency } from '../utilities/formatCurrency'
+import { useShoppingCartContext } from './../context/ShoppingCartContext'
 
 export type StoreItemProps = {
   id: number
@@ -15,7 +16,15 @@ export function StoreItem({
   price,
   imgUrl,
 }: StoreItemProps): JSX.Element {
-  const quantity = 1
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCartContext()
+
+  const quantity = getItemQuantity(id)
+
   return (
     <Card data-testid="store-item-card">
       <Card.Img
@@ -34,37 +43,52 @@ export function StoreItem({
             {formatCurrency(price)}
           </span>
         </Card.Title>
-        {/* {quantity === 0 ? (
-          <Button className="w-100" data-testid="add-to-cart-button">
+        {quantity === 0 ? (
+          <Button
+            className="w-100"
+            data-testid="add-to-cart-button"
+            onClick={() => increaseCartQuantity(id)}
+          >
             + Add to cart
           </Button>
-        ) : ( */}
-        <div
-          className="d-flex align-items-center flex-column"
-          style={{ gap: '.5rem' }}
-        >
+        ) : (
           <div
-            className="d-flex align-items-center justify-content-center"
+            className="d-flex align-items-center flex-column"
             style={{ gap: '.5rem' }}
           >
-            <Button data-testid="decrement-cart-button">-</Button>
-            <div>
-              <span className="fs-3" data-testid="cart-quantity-value">
-                {quantity}
-              </span>
-              in cart
+            <div
+              className="d-flex align-items-center justify-content-center"
+              style={{ gap: '.5rem' }}
+            >
+              <Button
+                data-testid="decrement-cart-button"
+                onClick={() => decreaseCartQuantity(id)}
+              >
+                -
+              </Button>
+              <div>
+                <span className="fs-3" data-testid="cart-quantity-value">
+                  {quantity}
+                </span>
+                &nbsp; in cart
+              </div>
+              <Button
+                data-testid="increment-cart-button"
+                onClick={() => increaseCartQuantity(id)}
+              >
+                +
+              </Button>
             </div>
-            <Button data-testid="increment-cart-button">+</Button>
+            <Button
+              variant="danger"
+              size="sm"
+              data-testid="remove-from-cart-button"
+              onClick={() => removeFromCart(id)}
+            >
+              Remove
+            </Button>
           </div>
-          <Button
-            variant="danger"
-            size="sm"
-            data-testid="remove-from-cart-button"
-          >
-            Remove
-          </Button>
-        </div>
-        {/* )} */}
+        )}
       </Card.Body>
     </Card>
   )
