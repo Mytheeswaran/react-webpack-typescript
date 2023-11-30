@@ -1,12 +1,22 @@
 import { useRef } from 'react'
 import { Row, Col, Container, Form, Button } from 'react-bootstrap'
+import { useAuthContext } from '../context/AuthContext'
 
 export function Login(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const email: any = useRef('')
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const password: any = useRef('')
-  const loginHandler = async () => {}
+  const { loginApiCall } = useAuthContext()
+
+  const loginHandler = async () => {
+    const payload = {
+      email: email.current.value,
+      password: password.current.value,
+    }
+    await loginApiCall(payload)
+  }
+
   return (
     <>
       <Container className="mt-2">
