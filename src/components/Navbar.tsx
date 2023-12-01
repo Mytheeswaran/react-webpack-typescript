@@ -1,9 +1,11 @@
 import { Navbar as NavbarBs, Container, Nav, Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { useShoppingCartContext } from '../context/ShoppingCartContext'
+import { useAuthContext } from '../context/AuthContext'
 
 export function Navbar(): JSX.Element {
   const { openCart, cartQuantity } = useShoppingCartContext()
+  const { user } = useAuthContext()
   return (
     <NavbarBs
       sticky="top"
@@ -22,11 +24,16 @@ export function Navbar(): JSX.Element {
             About
           </Nav.Link>
         </Nav>
-        <Nav data-testid="navbar-link-container">
-          <Nav.Link to="/login" as={NavLink} role="login-link-test">
-            Login
-          </Nav.Link>
-        </Nav>
+        {user ? (
+          user.email
+        ) : (
+          <Nav data-testid="navbar-link-container">
+            <Nav.Link to="/login" as={NavLink} role="login-link-test">
+              Login
+            </Nav.Link>
+          </Nav>
+        )}
+
         {cartQuantity > 0 && (
           <Button
             style={{ width: '3rem', height: '3rem', position: 'relative' }}
