@@ -66,7 +66,7 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
 
 {
   /* 
-    withCredentials - Used for cross-origin cookie transfers
+    1. withCredentials - Used for cross-origin cookie transfers
         a. During start of the application, the cookie values will be empty under application tab. When the login endpoint is hit, 
           the endpoint authenticates the user and attaches auth cookie in the response. This response auth cookie is then placed in the 
           cookie value under application tab when withCredentials is set to true.
@@ -80,5 +80,9 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
         link- https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials
         
         Refer timeline: 14:40 in video https://www.youtube.com/watch?v=969UBVOEfxI&t=0s
+
+    2. How Access Tokens and Refresh tokens work?
+      a. https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/
+      b. https://stackoverflow.com/questions/43877488/is-it-necessary-to-refresh-tokens-every-request
   */
 }

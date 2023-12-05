@@ -10,6 +10,7 @@ import { Login } from './pages/Login'
 import { Navbar } from './components/Navbar'
 import { ShoppingCartProvider } from './context/ShoppingCartContext'
 import { AuthContextProvider } from './context/AuthContext'
+import { AuthCheck } from './pages/AuthCheck'
 
 export const App = (): JSX.Element => {
   return (
@@ -22,6 +23,7 @@ export const App = (): JSX.Element => {
             <Route path="/store" element={<Store />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/auth-check" element={<AuthCheck />} />
           </Routes>
         </Container>
       </ShoppingCartProvider>

@@ -23,6 +23,9 @@ export function Navbar(): JSX.Element {
           <Nav.Link to="/about" as={NavLink} role="about-link-test">
             About
           </Nav.Link>
+          <Nav.Link to="/auth-check" as={NavLink} role="about-link-test">
+            Auth Check
+          </Nav.Link>
         </Nav>
         {user ? (
           user.email
