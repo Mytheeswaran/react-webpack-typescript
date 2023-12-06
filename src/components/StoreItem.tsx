@@ -48,6 +48,7 @@ export function StoreItem({
             className="w-100"
             data-testid="add-to-cart-button"
             onClick={() => increaseCartQuantity(id)}
+            role="add-to-cart-button"
           >
             + Add to cart
           </Button>
@@ -63,6 +64,7 @@ export function StoreItem({
               <Button
                 data-testid="decrement-cart-button"
                 onClick={() => decreaseCartQuantity(id)}
+                role="decrement-cart-button"
               >
                 -
               </Button>
@@ -75,6 +77,7 @@ export function StoreItem({
               <Button
                 data-testid="increment-cart-button"
                 onClick={() => increaseCartQuantity(id)}
+                role="increment-cart-button"
               >
                 +
               </Button>
@@ -84,6 +87,7 @@ export function StoreItem({
               size="sm"
               data-testid="remove-from-cart-button"
               onClick={() => removeFromCart(id)}
+              role="remove-from-cart-button"
             >
               Remove
             </Button>
