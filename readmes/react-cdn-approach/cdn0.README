@@ -10,3 +10,6 @@
 
 2. Comparing Azure Static Web Apps vs Azure WebApps vs Azure Blob Storage Static Sites
     https://devblogs.microsoft.com/devops/comparing-azure-static-web-apps-vs-azure-webapps-vs-azure-blob-storage-static-sites/
+
+3. Hosting a React JS single page application on Azure Blob Storage & Azure CDN for SSL, HTTP to HTTPS redirect and rewrite client routing traffic to the default document.
+    https://antbutcher.medium.com/hosting-a-react-js-app-on-azure-blob-storage-azure-cdn-for-ssl-and-routing-8fdf4a48feeb
