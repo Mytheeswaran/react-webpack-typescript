@@ -1,0 +1,7 @@
+
+a. Creating instance of axios --> jwtInterceptor = axios.create({})
+b. jwtInterceptor.interceptors.response.use(function when no error, function when response error)
+c. axios(resError.config) --> automatically triggers actual endpoint post receiving refresh tokens
+
+Links:
+    Typing axios error obj - https://stackoverflow.com/questions/69264472/axios-error-typescript-annotation-must-be-any-or-unknown-if
