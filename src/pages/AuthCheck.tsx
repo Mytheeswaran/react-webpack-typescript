@@ -6,11 +6,24 @@ export function AuthCheck(): JSX.Element {
   const [movies, setMovies] = useState([])
 
   useEffect(() => {
+    const abortController = new AbortController()
+
     jwtInterceptor // use jwtInterceptor in place of axios to intercept api requests
-      .get('http://localhost:4000/liked-movies', { withCredentials: true })
+      .get('http://localhost:4000/liked-movies', {
+        withCredentials: true,
+        signal: abortController.signal,
+      })
       .then((res) => {
         setMovies(res.data)
       })
+      .catch((e) => {
+        // Need to catch canceled request error when using abortController.abort() cleanup
+        console.log('Axios Interceptor error for using abortController:: ', e)
+      })
+
+    return () => {
+      abortController.abort()
+    }
   }, [])
 
   return (
