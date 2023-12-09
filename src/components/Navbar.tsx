@@ -5,7 +5,7 @@ import { useAuthContext } from '../context/AuthContext'
 
 export function Navbar(): JSX.Element {
   const { openCart, cartQuantity } = useShoppingCartContext()
-  const { user } = useAuthContext()
+  const { user, logoutApiCall } = useAuthContext()
   return (
     <NavbarBs
       sticky="top"
@@ -28,7 +28,19 @@ export function Navbar(): JSX.Element {
           </Nav.Link>
         </Nav>
         {user ? (
-          user.email
+          <>
+            {user.email} &nbsp;&nbsp;
+            <Nav data-testid="navbar-link-container">
+              <Button
+                size="sm"
+                color="primary"
+                onClick={logoutApiCall}
+                role="logout-button-test"
+              >
+                Logout
+              </Button>
+            </Nav>
+          </>
         ) : (
           <Nav data-testid="navbar-link-container">
             <Nav.Link to="/login" as={NavLink} role="login-link-test">

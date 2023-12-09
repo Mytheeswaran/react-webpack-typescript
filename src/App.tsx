@@ -11,6 +11,7 @@ import { Navbar } from './components/Navbar'
 import { ShoppingCartProvider } from './context/ShoppingCartContext'
 import { AuthContextProvider } from './context/AuthContext'
 import { AuthCheck } from './pages/AuthCheck'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 export const App = (): JSX.Element => {
   return (
@@ -22,8 +23,22 @@ export const App = (): JSX.Element => {
             <Route path="/" element={<Home />} />
             <Route path="/store" element={<Store />} />
             <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/auth-check" element={<AuthCheck />} />
+            <Route
+              path="/login"
+              element={
+                <ProtectedRoute accessBy="non-authenticated-users">
+                  <Login />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/auth-check"
+              element={
+                <ProtectedRoute accessBy="authenticated-users">
+                  <AuthCheck />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </Container>
       </ShoppingCartProvider>

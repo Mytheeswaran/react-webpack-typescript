@@ -14,7 +14,8 @@ type Payload = {
 
 type AuthContextType = {
   loginApiCall: (payload: Payload) => void
-  user: User
+  user: null | User
+  logoutApiCall: () => void
 }
 
 type User = {
@@ -34,7 +35,7 @@ export const useAuthContext = () => {
 }
 
 export const AuthContextProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User>(() => {
+  const [user, setUser] = useState<null | User>(() => {
     const userProfile = localStorage.getItem('userProfile')
     if (userProfile) {
       return JSON.parse(userProfile)
@@ -57,8 +58,19 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
     navigate('/')
   }
 
+  const logoutApiCall = async () => {
+    // The purpose of calling logout API is to clear cookies in the browser automatically using withCredentials
+    await axios.get('http://localhost:4000/logout', {
+      withCredentials: true,
+    })
+
+    setUser(null)
+    localStorage.removeItem('userProfile')
+    navigate('/login')
+  }
+
   return (
-    <AuthContext.Provider value={{ loginApiCall, user }}>
+    <AuthContext.Provider value={{ loginApiCall, user, logoutApiCall }}>
       {children}
     </AuthContext.Provider>
   )
