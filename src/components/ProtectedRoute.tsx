@@ -19,3 +19,5 @@ export const ProtectedRoute = ({ children, accessBy }: ProtectedRouteProps) => {
   }
   return <Navigate to="/"></Navigate>
 }
+
+// ref: https://www.youtube.com/watch?v=GJZP8vWj12s&t=0s
