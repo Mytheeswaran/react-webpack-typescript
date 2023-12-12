@@ -40,3 +40,7 @@ Error: error importing css files in jest env - SyntaxError: Unexpected token {
                 '\\.(css|less)$': 'identity-obj-proxy',
             },
     url ref(s): https://github.com/jestjs/jest/issues/3094 and https://jestjs.io/docs/webpack
+
+Test for non-existence of an element:
+    expect(screen.queryByTestId('navbar-cart-button')).not.toBeInTheDocument()
+    https://stackoverflow.com/questions/52783144/how-do-you-test-for-the-non-existence-of-an-element-using-jest-and-react-testing
