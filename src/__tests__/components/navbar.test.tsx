@@ -6,7 +6,7 @@ import { Home } from '../../pages/Home'
 import { Store } from '../../pages/Store'
 import { About } from '../../pages/About'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { ShoppingCartProvider } from '../../context/ShoppingCartContext'
+import { ShoppingCartProvider } from '../../contexts/ShoppingCartContext'
 
 beforeEach(() => {
   render(

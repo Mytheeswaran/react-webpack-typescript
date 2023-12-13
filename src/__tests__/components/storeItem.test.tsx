@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { StoreItem, StoreItemProps } from '../../components/StoreItem'
-import { ShoppingCartProvider } from '../../context/ShoppingCartContext'
+import { ShoppingCartProvider } from '../../contexts/ShoppingCartContext'
 
 // create a beforeEach function which will render these before each test is called.
 beforeEach(() => {
@@ -10,11 +10,8 @@ beforeEach(() => {
     price: 14000,
     imgUrl: '/imgs/banana.jpg',
   }
-  render(
-    <ShoppingCartProvider>
-      <StoreItem {...storeItemMock} />
-    </ShoppingCartProvider>
-  )
+
+  render(<StoreItem {...storeItemMock} />, { wrapper: ShoppingCartProvider })
 })
 
 it('should render initial item card with Add To Cart button', () => {
@@ -57,3 +54,5 @@ it('should remove item from cart and display Add To Cart button', async () => {
   await fireEvent.click(removeFromCartBtn)
   expect(screen.getByTestId('add-to-cart-button')).toBeInTheDocument
 })
+
+// Example user of wrapper attribute for context provider components: { wrapper: ShoppingCartProvider }

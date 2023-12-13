@@ -14,3 +14,10 @@ Links referred:
 
     4. Test url path in a Navbar component, when clicking every link
         https://stackoverflow.com/questions/50977862/how-to-test-url-change-with-jest
+
+    5. Use of wrappers
+        https://www.youtube.com/watch?v=jYaDpuPQW9M - wrapper method
+
+    6. Memory for router testing
+        https://medium.com/@antonybudianto/react-router-testing-with-jest-and-enzyme-17294fefd303
+        https://www.tabnine.com/code/javascript/functions/history/createMemoryHistory
