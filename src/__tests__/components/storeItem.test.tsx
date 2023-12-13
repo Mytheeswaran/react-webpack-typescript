@@ -1,10 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import { StoreItem, StoreItemProps } from '../../components/StoreItem'
+import { StoreItem } from '../../components/StoreItem'
 import { ShoppingCartProvider } from '../../contexts/ShoppingCartContext'
+import { ItemType } from '../../types/item'
 
 // create a beforeEach function which will render these before each test is called.
 beforeEach(() => {
-  const storeItemMock: StoreItemProps = {
+  const storeItemMock: ItemType = {
     id: 1,
     name: 'banana',
     price: 14000,
