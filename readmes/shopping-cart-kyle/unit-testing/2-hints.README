@@ -17,3 +17,8 @@
 3. Find coverages for unit testing
     a. Check Uncovered Line#s tab using cmd: npm run test:coverage. Then trace back to the lines in the function to achieve tests coverage
         ex: 'test to cover all the % lines during unit testing for the funcs increaseCartQuantity() and decreaseCartQuantity()' in store.test.tsx
+
+4. Error: TypeError: targetWindow.matchMedia is not a function
+    Resolution: Add file ./src/setupDomTests.ts with content in the below link
+        https://blog.lysender.com/2023/06/jest-react-testing-window-matchmedia-is-not-a-function/
+

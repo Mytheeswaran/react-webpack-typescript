@@ -12,7 +12,12 @@ export type ShoppingCartProps = {
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart, cartItems } = useShoppingCartContext()
   return (
-    <Offcanvas show={isOpen} onHide={closeCart} placement="end">
+    <Offcanvas
+      show={isOpen}
+      onHide={closeCart}
+      placement="end"
+      data-testid="cart-slider-screen-wrapper"
+    >
       <Offcanvas.Header closeButton={true}>
         <Offcanvas.Title>Your cart</Offcanvas.Title>
       </Offcanvas.Header>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">73.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/8</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -105,20 +105,25 @@
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -127,16 +132,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -161,24 +171,29 @@ export type ShoppingCartProps = {
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart, cartItems } = useShoppingCartContext()
   return (
-    &lt;Offcanvas show={isOpen} onHide={closeCart} placement="end"&gt;
+    &lt;Offcanvas
+      show={isOpen}
+      onHide={closeCart}
+      placement="end"
+      data-testid="cart-slider-screen-wrapper"
+    &gt;
       &lt;Offcanvas.Header closeButton={true}&gt;
         &lt;Offcanvas.Title&gt;Your cart&lt;/Offcanvas.Title&gt;
       &lt;/Offcanvas.Header&gt;
       &lt;Offcanvas.Body&gt;
         &lt;Stack gap={3}&gt;
           {cartItems &amp;&amp;
-            cartItems.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {
-<span class="cstat-no" title="statement not covered" >              return &lt;ShoppingCartItem key={item.id} {...item} /&gt;</span>
+            cartItems.map((item) =&gt; {
+              return &lt;ShoppingCartItem key={item.id} {...item} /&gt;
             })}
           &lt;div className="ms-auto fw-bold fs-5"&gt;
             Total:{' '}
             {formatCurrency(
-              cartItems.reduce(<span class="fstat-no" title="function not covered" >(t</span>otal, cartItem) =&gt; {
-                const item: ItemType | undefined = <span class="cstat-no" title="statement not covered" >storeItems.find(</span>
-<span class="fstat-no" title="function not covered" >                  (s</span>toreItem) =&gt; <span class="cstat-no" title="statement not covered" >storeItem.id === cartItem.id</span>
+              cartItems.reduce((total, cartItem) =&gt; {
+                const item: ItemType | undefined = storeItems.find(
+                  (storeItem) =&gt; storeItem.id === cartItem.id
                 )
-<span class="cstat-no" title="statement not covered" >                return total + (item?.price || 0) * cartItem.quantity</span>
+                return total + (item<span class="branch-0 cbranch-no" title="branch not covered" >?.p</span>rice || <span class="branch-1 cbranch-no" title="branch not covered" >0)</span> * cartItem.quantity
               }, 0)
             )}
           &lt;/div&gt;
@@ -196,7 +211,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-13T23:03:27.462Z
+                at 2023-12-19T19:42:53.817Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

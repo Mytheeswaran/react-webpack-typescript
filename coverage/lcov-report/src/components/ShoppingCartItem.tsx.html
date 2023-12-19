@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.71% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/14</span>
+                <span class='fraction'>12/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/11</span>
+                <span class='fraction'>10/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -114,24 +114,24 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,25 +174,25 @@ import storeItems from '../data/items.json'
 import { ItemType } from '../types/item'
 import { formatCurrency } from '../utilities/formatCurrency'
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >ShoppingCartItem(</span>{ id<span class="cstat-no" title="statement not covered" >, q</span>uantity<span class="cstat-no" title="statement not covered" > }: CartItem)</span> {
-  const { removeFromCart } = <span class="cstat-no" title="statement not covered" >useShoppingCartContext()</span>
-  const cartItem: ItemType | undefined = <span class="cstat-no" title="statement not covered" >storeItems.find(</span>
-<span class="fstat-no" title="function not covered" >    (i</span>tem) =&gt; <span class="cstat-no" title="statement not covered" >item.id === id</span>
+export function ShoppingCartItem({ id, quantity }: CartItem) {
+  const { removeFromCart } = useShoppingCartContext()
+  const cartItem: ItemType | undefined = storeItems.find(
+    (item) =&gt; item.id === id
   )
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (cartItem == null) <span class="cstat-no" title="statement not covered" >return null</span></span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (cartItem == null) <span class="cstat-no" title="statement not covered" >return null</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;Stack direction="horizontal" gap={2} className="d-flex align-items-center"&gt;
       &lt;img
-        src={cartItem ? cartItem.imgUrl : ''}
+        src={cartItem ? cartItem.imgUrl : <span class="branch-1 cbranch-no" title="branch not covered" >''}</span>
         style={{ width: '125px', height: '75px', objectFit: 'cover' }}
       /&gt;
       &lt;div className="me-auto"&gt;
         &lt;div&gt;
           {cartItem.name}{' '}
           {quantity &gt; 1 &amp;&amp; (
-            &lt;span className="text-muted" style={{ fontSize: '.65rem' }}&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >            &lt;span className="text-muted" style={{ fontSize: '.65rem' }}&gt;</span>
               x{quantity}
             &lt;/span&gt;
           )}
@@ -223,7 +223,7 @@ export function <span class="fstat-no" title="function not covered" >ShoppingCar
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-13T23:03:27.462Z
+                at 2023-12-19T19:42:53.817Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
