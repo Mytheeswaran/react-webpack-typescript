@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1703014973887" clover="3.2.0">
-  <project timestamp="1703014973888" name="All files">
-    <metrics statements="115" coveredstatements="97" conditionals="37" coveredconditionals="31" methods="44" coveredmethods="38" elements="196" coveredelements="166" complexity="0" loc="115" ncloc="115" packages="5" files="12" classes="12"/>
+<coverage generated="1703285212582" clover="3.2.0">
+  <project timestamp="1703285212583" name="All files">
+    <metrics statements="119" coveredstatements="103" conditionals="42" coveredconditionals="36" methods="45" coveredmethods="41" elements="206" coveredelements="180" complexity="0" loc="119" ncloc="119" packages="5" files="12" classes="12"/>
     <package name="src">
       <metrics statements="18" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
       <file name="App.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\App.tsx">
@@ -33,33 +33,37 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="48" coveredstatements="47" conditionals="17" coveredconditionals="12" methods="13" coveredmethods="12"/>
+      <metrics statements="52" coveredstatements="52" conditionals="22" coveredconditionals="17" methods="14" coveredmethods="14"/>
       <file name="Navbar.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\components\Navbar.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
+        <line num="6" count="14" type="stmt"/>
+        <line num="7" count="14" type="stmt"/>
       </file>
       <file name="ShoppingCart.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\components\ShoppingCart.tsx">
-        <metrics statements="12" coveredstatements="12" conditionals="8" coveredconditionals="6" methods="4" coveredmethods="4"/>
+        <metrics statements="16" coveredstatements="16" conditionals="13" coveredconditionals="10" methods="5" coveredmethods="5"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="37" count="1" type="cond" truecount="4" falsecount="2"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="51" count="1" type="cond" truecount="4" falsecount="2"/>
       </file>
       <file name="ShoppingCartItem.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\components\ShoppingCartItem.tsx">
-        <metrics statements="11" coveredstatements="10" conditionals="5" coveredconditionals="2" methods="3" coveredmethods="2"/>
+        <metrics statements="11" coveredstatements="11" conditionals="5" coveredconditionals="3" methods="3" coveredmethods="3"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
@@ -70,7 +74,7 @@
         <line num="13" count="1" type="stmt"/>
         <line num="16" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
       </file>
       <file name="StoreItem.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\components\StoreItem.tsx">
         <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
@@ -78,46 +82,46 @@
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
-        <line num="8" count="67" type="stmt"/>
-        <line num="9" count="67" type="stmt"/>
-        <line num="10" count="67" type="stmt"/>
-        <line num="11" count="67" type="stmt"/>
-        <line num="14" count="67" type="stmt"/>
-        <line num="15" count="67" type="stmt"/>
-        <line num="16" count="67" type="stmt"/>
-        <line num="17" count="67" type="stmt"/>
-        <line num="18" count="67" type="stmt"/>
-        <line num="20" count="67" type="stmt"/>
-        <line num="22" count="67" type="stmt"/>
+        <line num="8" count="79" type="stmt"/>
+        <line num="9" count="79" type="stmt"/>
+        <line num="10" count="79" type="stmt"/>
+        <line num="11" count="79" type="stmt"/>
+        <line num="14" count="79" type="stmt"/>
+        <line num="15" count="79" type="stmt"/>
+        <line num="16" count="79" type="stmt"/>
+        <line num="17" count="79" type="stmt"/>
+        <line num="18" count="79" type="stmt"/>
+        <line num="20" count="79" type="stmt"/>
+        <line num="22" count="79" type="stmt"/>
         <line num="44" count="6" type="stmt"/>
         <line num="60" count="3" type="stmt"/>
-        <line num="73" count="5" type="stmt"/>
+        <line num="73" count="6" type="stmt"/>
         <line num="83" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.contexts">
-      <metrics statements="36" coveredstatements="35" conditionals="20" coveredconditionals="19" methods="19" coveredmethods="18"/>
+      <metrics statements="36" coveredstatements="36" conditionals="20" coveredconditionals="19" methods="19" coveredmethods="19"/>
       <file name="ShoppingCartContext.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\contexts\ShoppingCartContext.tsx">
-        <metrics statements="36" coveredstatements="35" conditionals="20" coveredconditionals="19" methods="19" coveredmethods="18"/>
+        <metrics statements="36" coveredstatements="36" conditionals="20" coveredconditionals="19" methods="19" coveredmethods="19"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="24" count="4" type="stmt"/>
         <line num="26" count="4" type="stmt"/>
-        <line num="27" count="80" type="stmt"/>
-        <line num="30" count="28" type="stmt"/>
-        <line num="31" count="28" type="stmt"/>
-        <line num="32" count="28" type="stmt"/>
-        <line num="34" count="28" type="stmt"/>
-        <line num="35" count="67" type="cond" truecount="6" falsecount="0"/>
-        <line num="38" count="28" type="stmt"/>
-        <line num="39" count="11" type="stmt"/>
-        <line num="40" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="27" count="96" type="stmt"/>
+        <line num="30" count="31" type="stmt"/>
+        <line num="31" count="31" type="stmt"/>
+        <line num="32" count="31" type="stmt"/>
+        <line num="34" count="31" type="stmt"/>
+        <line num="35" count="79" type="cond" truecount="6" falsecount="0"/>
+        <line num="38" count="31" type="stmt"/>
+        <line num="39" count="12" type="stmt"/>
+        <line num="40" count="12" type="cond" truecount="2" falsecount="0"/>
         <line num="41" count="6" type="stmt"/>
-        <line num="43" count="5" type="stmt"/>
-        <line num="44" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="45" count="5" type="stmt"/>
+        <line num="43" count="6" type="stmt"/>
+        <line num="44" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="6" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
-        <line num="54" count="28" type="stmt"/>
+        <line num="54" count="31" type="stmt"/>
         <line num="55" count="3" type="stmt"/>
         <line num="56" count="3" type="cond" truecount="5" falsecount="1"/>
         <line num="57" count="1" type="stmt"/>
@@ -125,16 +129,16 @@
         <line num="60" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="61" count="2" type="stmt"/>
         <line num="63" count="1" type="stmt"/>
-        <line num="70" count="28" type="stmt"/>
-        <line num="71" count="2" type="stmt"/>
-        <line num="72" count="2" type="stmt"/>
-        <line num="76" count="28" type="stmt"/>
+        <line num="70" count="31" type="stmt"/>
+        <line num="71" count="3" type="stmt"/>
+        <line num="72" count="3" type="stmt"/>
+        <line num="76" count="31" type="stmt"/>
         <line num="77" count="1" type="stmt"/>
-        <line num="79" count="28" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="83" count="28" type="stmt"/>
-        <line num="84" count="17" type="stmt"/>
-        <line num="87" count="28" type="stmt"/>
+        <line num="79" count="31" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="83" count="31" type="stmt"/>
+        <line num="84" count="18" type="stmt"/>
+        <line num="87" count="31" type="stmt"/>
       </file>
     </package>
     <package name="src.pages">
@@ -165,7 +169,7 @@
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="5" type="stmt"/>
         <line num="6" count="5" type="stmt"/>
-        <line num="7" count="71" type="stmt"/>
+        <line num="7" count="84" type="stmt"/>
       </file>
     </package>
   </project>

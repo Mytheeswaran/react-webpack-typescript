@@ -4,6 +4,7 @@ import { ShoppingCartItem } from '../components/ShoppingCartItem'
 import { formatCurrency } from '../utilities/formatCurrency'
 import storeItems from '../data/items.json'
 import { ItemType } from '../types/item'
+import { useCallback } from 'react'
 
 export type ShoppingCartProps = {
   isOpen: boolean
@@ -11,6 +12,19 @@ export type ShoppingCartProps = {
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart, cartItems } = useShoppingCartContext()
+
+  // The below ref is to set data-testid = offcanvas-slider-cross-button to a button ele inside offcanvas bootstrap library
+  // So first accessing the parent element Offcanvas.Header using ref and traversing to the child button using class (btn-close) and setting our testid attribute
+  const offCanvasHeaderRef: (element: HTMLDivElement) => void = useCallback<
+    (element: HTMLElement) => void
+  >((element: HTMLElement) => {
+    if (element) {
+      element
+        .querySelector('.btn-close')
+        ?.setAttribute('data-testid', 'offcanvas-slider-close-button')
+    }
+  }, [])
+
   return (
     <Offcanvas
       show={isOpen}
@@ -18,7 +32,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
       placement="end"
       data-testid="cart-slider-screen-wrapper"
     >
-      <Offcanvas.Header closeButton={true}>
+      <Offcanvas.Header closeButton={true} ref={offCanvasHeaderRef}>
         <Offcanvas.Title>Your cart</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
@@ -45,3 +59,4 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
 }
 
 // (item?.price || 0) is equal to (item ? item.price : 0)
+// element.querySelector('.btn-close')?.setAttribute('data-testid', 'offcanvas-slider-cross-button') is equal to element.children[1].setAttribute('data-testid', 'cart-item-cross-button')

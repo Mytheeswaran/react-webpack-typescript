@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/14</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/5</span>
+                <span class='fraction'>3/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.9% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -114,7 +114,24 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,7 +173,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,31 +217,48 @@ export function ShoppingCartItem({ id, quantity }: CartItem) {
   <span class="missing-if-branch" title="if path not taken" >I</span>if (cartItem == null) <span class="cstat-no" title="statement not covered" >return null</span>
 &nbsp;
   return (
-    &lt;Stack direction="horizontal" gap={2} className="d-flex align-items-center"&gt;
+    &lt;Stack
+      direction="horizontal"
+      gap={2}
+      className="d-flex align-items-center"
+      data-testid="cart-item-wrapper"
+    &gt;
       &lt;img
         src={cartItem ? cartItem.imgUrl : <span class="branch-1 cbranch-no" title="branch not covered" >''}</span>
         style={{ width: '125px', height: '75px', objectFit: 'cover' }}
+        data-testid="cart-item-image"
       /&gt;
       &lt;div className="me-auto"&gt;
-        &lt;div&gt;
+        &lt;div data-testid="cart-item-description"&gt;
           {cartItem.name}{' '}
           {quantity &gt; 1 &amp;&amp; (
-<span class="branch-1 cbranch-no" title="branch not covered" >            &lt;span className="text-muted" style={{ fontSize: '.65rem' }}&gt;</span>
+            &lt;span
+              className="text-muted"
+              style={{ fontSize: '.65rem' }}
+              data-testid="cart-item-units"
+            &gt;
               x{quantity}
             &lt;/span&gt;
           )}
         &lt;/div&gt;
         &lt;div&gt;
-          &lt;span className="text-muted" style={{ fontSize: '.75rem' }}&gt;
+          &lt;span
+            className="text-muted"
+            style={{ fontSize: '.75rem' }}
+            data-testid="cart-item-price-per-unit"
+          &gt;
             {formatCurrency(cartItem.price)}
           &lt;/span&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      &lt;div&gt;{formatCurrency(cartItem.price * quantity)}&lt;/div&gt;
+      &lt;div data-testid="cart-item-price-for-all-quantity"&gt;
+        {formatCurrency(cartItem.price * quantity)}
+      &lt;/div&gt;
       &lt;Button
         variant="outline-danger"
         size="sm"
-        onClick={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >r</span>emoveFromCart(id)}</span>
+        onClick={() =&gt; removeFromCart(id)}
+        data-testid="delete-cart-item-btn"
       &gt;
         &amp;times;
       &lt;/Button&gt;
@@ -223,7 +274,7 @@ export function ShoppingCartItem({ id, quantity }: CartItem) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-19T19:42:53.817Z
+                at 2023-12-22T22:46:52.434Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

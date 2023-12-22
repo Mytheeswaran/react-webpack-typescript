@@ -16,31 +16,48 @@ export function ShoppingCartItem({ id, quantity }: CartItem) {
   if (cartItem == null) return null
 
   return (
-    <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
+    <Stack
+      direction="horizontal"
+      gap={2}
+      className="d-flex align-items-center"
+      data-testid="cart-item-wrapper"
+    >
       <img
         src={cartItem ? cartItem.imgUrl : ''}
         style={{ width: '125px', height: '75px', objectFit: 'cover' }}
+        data-testid="cart-item-image"
       />
       <div className="me-auto">
-        <div>
+        <div data-testid="cart-item-description">
           {cartItem.name}{' '}
           {quantity > 1 && (
-            <span className="text-muted" style={{ fontSize: '.65rem' }}>
+            <span
+              className="text-muted"
+              style={{ fontSize: '.65rem' }}
+              data-testid="cart-item-units"
+            >
               x{quantity}
             </span>
           )}
         </div>
         <div>
-          <span className="text-muted" style={{ fontSize: '.75rem' }}>
+          <span
+            className="text-muted"
+            style={{ fontSize: '.75rem' }}
+            data-testid="cart-item-price-per-unit"
+          >
             {formatCurrency(cartItem.price)}
           </span>
         </div>
       </div>
-      <div>{formatCurrency(cartItem.price * quantity)}</div>
+      <div data-testid="cart-item-price-for-all-quantity">
+        {formatCurrency(cartItem.price * quantity)}
+      </div>
       <Button
         variant="outline-danger"
         size="sm"
         onClick={() => removeFromCart(id)}
+        data-testid="delete-cart-item-btn"
       >
         &times;
       </Button>

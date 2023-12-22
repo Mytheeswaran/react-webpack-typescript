@@ -1,0 +1,20 @@
+1. callback refs:
+    Faced issue while accessing an element soon after the component mounted, by using useRef() inside useEffect, but always got null instead of the element itself.
+    --> When using useRef inside useEffect, there can be cases where the useRef value is null when accessed inside the effect. This is because useEffect runs after the initial render, and the ref might not be assigned immediately.
+    
+    To ensure that you access the correct value of the ref inside useEffect, you can use a callback ref instead
+
+        pseudocode: https://elfi-y.medium.com/react-callback-refs-a-4bd2da317269
+            const Simple = () => {
+                const ref = useCallback(node => {
+                    if (node) node.focus()
+                }, [])
+                return <div ref={ref}> sample </div>
+            }
+
+    Refer offCanvasHeaderRef in our code ./components/ShoppingCart.tsx
+
+2. querySelector vs element.children[1]
+
+    Refer: querySelector('.btn-close') in code
+    Link: https://www.geeksforgeeks.org/how-to-get-the-child-element-of-a-parent-using-javascript/
