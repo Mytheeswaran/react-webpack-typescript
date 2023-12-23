@@ -1,0 +1,24 @@
+1. Test for non-existence of an element:
+    expect(screen.queryByTestId('navbar-cart-button')).not.toBeInTheDocument().
+
+    https://stackoverflow.com/questions/52783144/how-do-you-test-for-the-non-existence-of-an-element-using-jest-and-react-testing.
+
+2. Context Provider API unit testing:
+    a. Testing src/contexts/ShoppingCartContext.tsx is not required as the libraries providing createContext, etc would already been 
+    tested by react itself.
+
+    b. The coverages for the functions inside src/contexts/ShoppingCartContext.tsx will be done automatically while we are 
+    testing the children (consumer) comps.
+
+    c. Links:
+        https://www.samdawson.dev/article/react-context-testing
+        https://www.youtube.com/watch?v=JikcO_pOwJg
+
+3. Find coverages for unit testing
+    a. Check Uncovered Line#s tab using cmd: npm run test:coverage. Then trace back to the lines in the function to achieve tests coverage
+        ex: 'test to cover all the % lines during unit testing for the funcs increaseCartQuantity() and decreaseCartQuantity()' in store.test.tsx
+
+4. Error: TypeError: targetWindow.matchMedia is not a function
+    Resolution: Add file ./src/setupDomTests.ts with content in the below link
+        https://blog.lysender.com/2023/06/jest-react-testing-window-matchmedia-is-not-a-function/
+

@@ -1,13 +1,7 @@
 import { Button, Card } from 'react-bootstrap'
 import { formatCurrency } from '../utilities/formatCurrency'
-import { useShoppingCartContext } from './../context/ShoppingCartContext'
-
-export type StoreItemProps = {
-  id: number
-  name: string
-  price: number
-  imgUrl: string
-}
+import { useShoppingCartContext } from '../contexts/ShoppingCartContext'
+import { ItemType } from '../types/item'
 
 export function StoreItem({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -15,7 +9,7 @@ export function StoreItem({
   name,
   price,
   imgUrl,
-}: StoreItemProps): JSX.Element {
+}: ItemType): JSX.Element {
   const {
     getItemQuantity,
     increaseCartQuantity,
