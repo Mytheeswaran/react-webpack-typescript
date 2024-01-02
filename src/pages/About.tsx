@@ -24,6 +24,7 @@ export function About(): JSX.Element {
 
   return (
     <>
+      <div>About-Page</div>
       <Form.Group className="mb-3">
         <Form.Label>Search about</Form.Label>
         <Form.Control

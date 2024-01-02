@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1703367812045" clover="3.2.0">
-  <project timestamp="1703367812045" name="All files">
-    <metrics statements="119" coveredstatements="103" conditionals="42" coveredconditionals="36" methods="45" coveredmethods="41" elements="206" coveredelements="180" complexity="0" loc="119" ncloc="119" packages="5" files="12" classes="12"/>
+<coverage generated="1704193728467" clover="3.2.0">
+  <project timestamp="1704193728467" name="All files">
+    <metrics statements="132" coveredstatements="111" conditionals="42" coveredconditionals="36" methods="50" coveredmethods="42" elements="224" coveredelements="189" complexity="0" loc="132" ncloc="132" packages="5" files="12" classes="12"/>
     <package name="src">
       <metrics statements="18" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
       <file name="App.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\App.tsx">
@@ -142,11 +142,24 @@
       </file>
     </package>
     <package name="src.pages">
-      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <metrics statements="23" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="5"/>
       <file name="About.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\pages\About.tsx">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="15" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
       </file>
       <file name="Home.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\pages\Home.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
