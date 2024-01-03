@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1704300016811" clover="3.2.0">
-  <project timestamp="1704300016812" name="All files">
-    <metrics statements="132" coveredstatements="111" conditionals="40" coveredconditionals="35" methods="50" coveredmethods="42" elements="222" coveredelements="188" complexity="0" loc="132" ncloc="132" packages="5" files="12" classes="12"/>
+<coverage generated="1704300637049" clover="3.2.0">
+  <project timestamp="1704300637050" name="All files">
+    <metrics statements="130" coveredstatements="109" conditionals="40" coveredconditionals="35" methods="44" coveredmethods="39" elements="214" coveredelements="183" complexity="0" loc="130" ncloc="130" packages="5" files="11" classes="11"/>
     <package name="src">
-      <metrics statements="18" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
+      <metrics statements="16" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\App.tsx">
         <metrics statements="11" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
@@ -25,11 +25,6 @@
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
-      </file>
-      <file name="setupDomTests.ts" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\setupDomTests.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
-        <line num="3" count="8" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.components">
