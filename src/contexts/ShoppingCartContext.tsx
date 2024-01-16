@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from 'react'
 import { ShoppingCart } from '../components/ShoppingCart'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 type ShoppingCartContextType = {
   getItemQuantity: (id: number) => number
@@ -28,7 +29,7 @@ export function useShoppingCartContext() {
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, setCartItems] = useLocalStorage('cart-items', [])
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const getItemQuantity = (id: number) => {
@@ -134,5 +135,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
         inventory.find((item)=>item.name === "oranges")?.quantity || 0
           ans: 0
+
+      
+    5. useLocalStorage() --> https://www.geeksforgeeks.org/reactjs-uselocalstorage-custom-hook/ 
   */
 }
