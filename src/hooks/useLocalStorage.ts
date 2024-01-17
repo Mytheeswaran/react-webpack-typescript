@@ -22,7 +22,7 @@ export function useLocalStorage<T>(key: string, defaultValue: T[] | (()=>T)) {
 
     useEffect(()=>{
         localStorage.setItem(key, JSON.stringify(localStorageState))
-    },[localStorageState])
+    },[key, localStorageState])
 
     return [localStorageState, setLocalStorageState] as [typeof localStorageState, typeof setLocalStorageState]
 }

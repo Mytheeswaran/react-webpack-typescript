@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1704912114579" clover="3.2.0">
-  <project timestamp="1704912114579" name="All files">
-    <metrics statements="130" coveredstatements="109" conditionals="40" coveredconditionals="35" methods="44" coveredmethods="39" elements="214" coveredelements="183" complexity="0" loc="130" ncloc="130" packages="5" files="11" classes="11"/>
+<coverage generated="1705523237135" clover="3.2.0">
+  <project timestamp="1705523237136" name="All files">
+    <metrics statements="145" coveredstatements="122" conditionals="44" coveredconditionals="38" methods="47" coveredmethods="42" elements="236" coveredelements="202" complexity="0" loc="145" ncloc="145" packages="6" files="12" classes="12"/>
     <package name="src">
       <metrics statements="16" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\App.tsx">
@@ -95,45 +95,66 @@
       </file>
     </package>
     <package name="src.contexts">
-      <metrics statements="36" coveredstatements="36" conditionals="20" coveredconditionals="19" methods="19" coveredmethods="19"/>
+      <metrics statements="37" coveredstatements="37" conditionals="20" coveredconditionals="19" methods="19" coveredmethods="19"/>
       <file name="ShoppingCartContext.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\contexts\ShoppingCartContext.tsx">
-        <metrics statements="36" coveredstatements="36" conditionals="20" coveredconditionals="19" methods="19" coveredmethods="19"/>
+        <metrics statements="37" coveredstatements="37" conditionals="20" coveredconditionals="19" methods="19" coveredmethods="19"/>
         <line num="1" count="5" type="stmt"/>
         <line num="2" count="5" type="stmt"/>
-        <line num="24" count="5" type="stmt"/>
-        <line num="26" count="5" type="stmt"/>
-        <line num="27" count="129" type="stmt"/>
-        <line num="30" count="37" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="28" count="129" type="stmt"/>
         <line num="31" count="37" type="stmt"/>
         <line num="32" count="37" type="stmt"/>
-        <line num="34" count="37" type="stmt"/>
-        <line num="35" count="103" type="cond" truecount="6" falsecount="0"/>
+        <line num="36" count="37" type="stmt"/>
         <line num="38" count="37" type="stmt"/>
-        <line num="39" count="15" type="stmt"/>
-        <line num="40" count="15" type="cond" truecount="2" falsecount="0"/>
-        <line num="41" count="8" type="stmt"/>
-        <line num="43" count="7" type="stmt"/>
-        <line num="44" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="45" count="7" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="54" count="37" type="stmt"/>
-        <line num="55" count="3" type="stmt"/>
-        <line num="56" count="3" type="cond" truecount="5" falsecount="1"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="59" count="2" type="stmt"/>
-        <line num="60" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="61" count="2" type="stmt"/>
-        <line num="63" count="1" type="stmt"/>
-        <line num="70" count="37" type="stmt"/>
-        <line num="71" count="3" type="stmt"/>
-        <line num="72" count="3" type="stmt"/>
-        <line num="76" count="37" type="stmt"/>
-        <line num="77" count="2" type="stmt"/>
-        <line num="79" count="37" type="stmt"/>
-        <line num="80" count="2" type="stmt"/>
+        <line num="39" count="103" type="cond" truecount="6" falsecount="0"/>
+        <line num="42" count="37" type="stmt"/>
+        <line num="43" count="15" type="stmt"/>
+        <line num="44" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="8" type="stmt"/>
+        <line num="47" count="7" type="stmt"/>
+        <line num="48" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="7" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="58" count="37" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="60" count="3" type="cond" truecount="5" falsecount="1"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="64" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="65" count="2" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="74" count="37" type="stmt"/>
+        <line num="75" count="3" type="stmt"/>
+        <line num="76" count="3" type="stmt"/>
+        <line num="80" count="37" type="stmt"/>
+        <line num="81" count="2" type="stmt"/>
         <line num="83" count="37" type="stmt"/>
-        <line num="84" count="26" type="stmt"/>
+        <line num="84" count="2" type="stmt"/>
         <line num="87" count="37" type="stmt"/>
+        <line num="88" count="26" type="stmt"/>
+        <line num="91" count="37" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.hooks">
+      <metrics statements="14" coveredstatements="12" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>
+      <file name="useLocalStorage.ts" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\hooks\useLocalStorage.ts">
+        <metrics statements="14" coveredstatements="12" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="37" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="9" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="13" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="37" type="stmt"/>
+        <line num="24" count="33" type="stmt"/>
+        <line num="27" count="37" type="stmt"/>
       </file>
     </package>
     <package name="src.pages">
