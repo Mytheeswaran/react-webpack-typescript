@@ -1,34 +1,65 @@
 /* eslint-disable prettier/prettier */
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 
-export function useLocalStorage(key, defaultValue) {
-    const [localStorageState, setLocalStorageState] = useState(() => {
+export function useLocalStorage<T>(key: string, defaultValue: T[] | (()=>T)) {
+    const [localStorageState, setLocalStorageState] = useState<T>(() => {
         try {
             const localStorageValue = localStorage.getItem(key)
 
             if(localStorageValue){
                 return JSON.parse(localStorageValue)
             }else{
-                localStorage.setItem(key, JSON.stringify(defaultValue)) 
-                return defaultValue
+
+                if(typeof defaultValue === 'function'){
+                    return (defaultValue as ()=>T)() // casting reason -->https://www.youtube.com/watch?v=lATafp15HWA @ timeline: 59:36
+                }else{
+                    return defaultValue
+                }                
             }
             
         } catch (e) {console.log('error in useLocalStorage', e)}
     })
 
-    const setLocalStorageFromOutside = (valOrFunc)=>{
-        let newValue
-        if(typeof valOrFunc === 'function'){
-            const fn = valOrFunc
-            newValue = fn(localStorageState)
+    useEffect(()=>{
+        localStorage.setItem(key, JSON.stringify(localStorageState))
+    },[localStorageState])
 
-        }else{
-            newValue = valOrFunc
+    return [localStorageState, setLocalStorageState] as [typeof localStorageState, typeof setLocalStorageState]
+}
+
+{
+    /**  --------------------------------Previous approach without useEffect----------------------------------
+
+        import { useState } from 'react'
+
+        export function useLocalStorage<T>(key: string, defaultValue: T | (()=>T)) {
+            const [localStorageState, setLocalStorageState] = useState<T>(() => {
+                try {
+                    const localStorageValue = localStorage.getItem(key)
+
+                    if(localStorageValue){
+                        return JSON.parse(localStorageValue)
+                    }else{
+                        localStorage.setItem(key, JSON.stringify(defaultValue)) 
+                        return defaultValue
+                    }
+                    
+                } catch (e) {console.log('error in useLocalStorage', e)}
+            })
+
+            const setLocalStorageFromOutside = (valOrFunc: ()=>T)=>{
+                let newValue
+                if(typeof valOrFunc === 'function'){
+                    newValue = valOrFunc(localStorageState)
+                }else{
+                    newValue = valOrFunc
+                }
+                localStorage.setItem(key, JSON.stringify(newValue))
+                setLocalStorageState(newValue)
+            }
+
+            return [localStorageState, setLocalStorageFromOutside] as [typeof localStorageState, typeof setLocalStorageFromOutside]
         }
-        localStorage.setItem(key, JSON.stringify(newValue))
-        setLocalStorageState(newValue)
 
-    }
-
-    return [localStorageState, setLocalStorageFromOutside]
+    */
 }

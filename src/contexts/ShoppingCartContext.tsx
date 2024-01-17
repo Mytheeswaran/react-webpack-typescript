@@ -29,7 +29,10 @@ export function useShoppingCartContext() {
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
-  const [cartItems, setCartItems] = useLocalStorage('cart-items', [])
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+    'cart-items',
+    []
+  )
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const getItemQuantity = (id: number) => {
