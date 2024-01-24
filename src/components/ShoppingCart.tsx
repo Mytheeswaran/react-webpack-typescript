@@ -41,7 +41,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
             cartItems.map((item) => {
               return <ShoppingCartItem key={item.id} {...item} />
             })}
-          <div className="ms-auto fw-bold fs-5">
+          <div className="ms-auto fw-bold fs-5" data-testid="total-cart-value">
             Total:{' '}
             {formatCurrency(
               cartItems.reduce((total, cartItem) => {

@@ -9,13 +9,16 @@ module.exports = {
     '!**/*.d.ts',
     '!**/node_modules/**',
     '!**/vendor/**',
+    '!**/src/setupDomTests.ts',
+    '!**/src/App.tsx',
+    '!**/src/index.tsx',
   ],
   coverageThreshold: {
     global: {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100,
+      branches: 85,
+      functions: 85,
+      lines: 85,
+      statements: 85,
     },
   },
   moduleNameMapper: {

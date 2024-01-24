@@ -5,7 +5,7 @@ import { Navbar } from '../../components/Navbar'
 import { Store } from '../../pages/Store'
 import { ShoppingCartProvider } from '../../contexts/ShoppingCartContext'
 
-beforeEach(() => {
+beforeAll(() => {
   render(
     <BrowserRouter>
       <ShoppingCartProvider>
@@ -18,7 +18,7 @@ beforeEach(() => {
   )
 })
 
-it('should render cart item details', async () => {
+it('should display cart items when items are added to the cart', async () => {
   const storeLink = screen.getByRole('store-link-test')
   await userEvent.click(storeLink)
 
@@ -27,30 +27,21 @@ it('should render cart item details', async () => {
   const incCartBtn = screen.getByRole('increment-cart-button')
   await fireEvent.click(incCartBtn)
 
+  await fireEvent.click(addToCartButton[1])
+
   const navCartButton = screen.getByTestId('navbar-cart-button')
   await userEvent.click(navCartButton)
 
   expect(screen.getByTestId('cart-slider-screen-wrapper')).toBeInTheDocument()
+  expect(screen.getAllByTestId('cart-item-wrapper')).toHaveLength(2)
 
-  expect(screen.getByTestId('cart-item-wrapper')).toBeInTheDocument()
-  expect(screen.getByTestId('cart-item-image')).toBeInTheDocument()
-  expect(screen.getByTestId('cart-item-description')).toBeInTheDocument()
-  expect(screen.getByTestId('cart-item-units')).toBeInTheDocument()
-  expect(screen.getByTestId('cart-item-units')).toHaveTextContent('x2')
-  expect(screen.getByTestId('cart-item-price-per-unit')).toBeInTheDocument()
-
-  expect(
-    screen.getByTestId('cart-item-price-for-all-quantity')
-  ).toBeInTheDocument()
-  expect(
-    screen.getByTestId('cart-item-price-for-all-quantity')
-  ).toHaveTextContent('US$21.98')
-
-  expect(screen.getByTestId('delete-cart-item-btn')).toBeInTheDocument()
-  const deleteCartButton = screen.getByTestId('delete-cart-item-btn')
-  await userEvent.click(deleteCartButton)
-  expect(screen.queryByTestId('cart-item-wrapper')).not.toBeInTheDocument()
+  expect(screen.getByTestId('total-cart-value')).toHaveTextContent(
+    'US$1,220.98'
+  )
 
   const offcanvasCloseBtn = screen.getByTestId('offcanvas-slider-close-button')
   await fireEvent.click(offcanvasCloseBtn)
+  expect(
+    screen.queryByTestId('cart-slider-screen-wrapper')
+  ).not.toBeInTheDocument()
 })

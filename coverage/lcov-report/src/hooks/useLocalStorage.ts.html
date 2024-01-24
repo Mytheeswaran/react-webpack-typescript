@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/Navbar.tsx</title>
+    <title>Code coverage report for src/hooks/useLocalStorage.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Navbar.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/hooks</a> useLocalStorage.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>14/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>12/14</span>
             </div>
         
             
@@ -128,35 +128,33 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,74 +193,70 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Navbar as NavbarBs, Container, Nav, Button } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
-import { useShoppingCartContext } from '../contexts/ShoppingCartContext'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable prettier/prettier */
+import { useState, useEffect} from 'react'
 &nbsp;
-export function Navbar(): JSX.Element {
-  const { openCart, cartQuantity } = useShoppingCartContext()
-  return (
-    &lt;NavbarBs
-      sticky="top"
-      className="bg-white shadow-sm mb-3"
-      data-testid="navbar-wrapper"
-    &gt;
-      &lt;Container&gt;
-        &lt;Nav className="me-auto" data-testid="navbar-link-container"&gt;
-          &lt;Nav.Link to="/" as={NavLink} role="home-link-test"&gt;
-            Home
-          &lt;/Nav.Link&gt;
-          &lt;Nav.Link to="/store" as={NavLink} role="store-link-test"&gt;
-            Store
-          &lt;/Nav.Link&gt;
-          &lt;Nav.Link to="/about" as={NavLink} role="about-link-test"&gt;
-            About
-          &lt;/Nav.Link&gt;
-        &lt;/Nav&gt;
-        {cartQuantity &gt; 0 &amp;&amp; (
-          &lt;Button
-            style={{ width: '3rem', height: '3rem', position: 'relative' }}
-            variant="outline-primary"
-            className="rounded-circle"
-            data-testid="navbar-cart-button"
-            onClick={openCart}
-          &gt;
-            &lt;svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-              fill="currentColor"
-              data-testid="navbar-cart-button-svg"
-            &gt;
-              &lt;path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z" /&gt;
-            &lt;/svg&gt;
-            &lt;div
-              className="rounded-circle bg-danger d-flex justify-content-center align-items-center "
-              style={{
-                color: 'white',
-                width: '1.5rem',
-                height: '1.5rem',
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-                transform: 'translate(25%, 25%)',
-              }}
-              data-testid="navbar-cart-button-cart-count"
-            &gt;
-              {cartQuantity}
-            &lt;/div&gt;
-          &lt;/Button&gt;
-        )}
-      &lt;/Container&gt;
-    &lt;/NavbarBs&gt;
-  )
+export function useLocalStorage&lt;T&gt;(key: string, defaultValue: T[] | (()=&gt;T)) {
+    const [localStorageState, setLocalStorageState] = useState&lt;T&gt;(() =&gt; {
+        try {
+            const localStorageValue = localStorage.getItem(key)
+&nbsp;
+            if(localStorageValue){
+                return JSON.parse(localStorageValue)
+            }else{
+&nbsp;
+                <span class="missing-if-branch" title="if path not taken" >I</span>if(typeof defaultValue === 'function'){
+<span class="cstat-no" title="statement not covered" >                    return (defaultValue as ()=&gt;T)() /</span>/ casting reason --&gt;https://www.youtube.com/watch?v=lATafp15HWA @ timeline: 59:36
+                }else{
+                    return defaultValue
+                }                
+            }
+            
+        } catch (e) {<span class="cstat-no" title="statement not covered" >console.log('error in useLocalStorage', e)}</span>
+    })
+&nbsp;
+    useEffect(()=&gt;{
+        localStorage.setItem(key, JSON.stringify(localStorageState))
+    },[key, localStorageState])
+&nbsp;
+    return [localStorageState, setLocalStorageState] as [typeof localStorageState, typeof setLocalStorageState]
 }
 &nbsp;
 {
-  /* 
-    For the reason why we use 1.5 rem comparitively to the parent/global style rem, refer Kyle video
-  */
+    /**  --------------------------------Previous approach without useEffect----------------------------------
+&nbsp;
+        import { useState } from 'react'
+&nbsp;
+        export function useLocalStorage&lt;T&gt;(key: string, defaultValue: T | (()=&gt;T)) {
+            const [localStorageState, setLocalStorageState] = useState&lt;T&gt;(() =&gt; {
+                try {
+                    const localStorageValue = localStorage.getItem(key)
+&nbsp;
+                    if(localStorageValue){
+                        return JSON.parse(localStorageValue)
+                    }else{
+                        localStorage.setItem(key, JSON.stringify(defaultValue)) 
+                        return defaultValue
+                    }
+                    
+                } catch (e) {console.log('error in useLocalStorage', e)}
+            })
+&nbsp;
+            const setLocalStorageFromOutside = (valOrFunc: ()=&gt;T)=&gt;{
+                let newValue
+                if(typeof valOrFunc === 'function'){
+                    newValue = valOrFunc(localStorageState)
+                }else{
+                    newValue = valOrFunc
+                }
+                localStorage.setItem(key, JSON.stringify(newValue))
+                setLocalStorageState(newValue)
+            }
+&nbsp;
+            return [localStorageState, setLocalStorageFromOutside] as [typeof localStorageState, typeof setLocalStorageFromOutside]
+        }
+&nbsp;
+    */
 }
 &nbsp;</pre></td></tr></table></pre>
 

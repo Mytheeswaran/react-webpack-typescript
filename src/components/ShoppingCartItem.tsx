@@ -23,7 +23,7 @@ export function ShoppingCartItem({ id, quantity }: CartItem) {
       data-testid="cart-item-wrapper"
     >
       <img
-        src={cartItem ? cartItem.imgUrl : ''}
+        src={cartItem.imgUrl}
         style={{ width: '125px', height: '75px', objectFit: 'cover' }}
         data-testid="cart-item-image"
       />
