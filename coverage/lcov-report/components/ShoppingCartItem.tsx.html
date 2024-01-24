@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/Navbar.tsx</title>
+    <title>Code coverage report for components/ShoppingCartItem.tsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Navbar.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">components</a> ShoppingCartItem.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -130,13 +130,25 @@
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,6 +189,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -186,84 +199,74 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Navbar as NavbarBs, Container, Nav, Button } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
-import { useShoppingCartContext } from '../contexts/ShoppingCartContext'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button, Stack } from 'react-bootstrap'
+import {
+  CartItem,
+  useShoppingCartContext,
+} from '../contexts/ShoppingCartContext'
+import storeItems from '../data/items.json'
+import { ItemType } from '../types/item'
+import { formatCurrency } from '../utilities/formatCurrency'
 &nbsp;
-export function Navbar(): JSX.Element {
-  const { openCart, cartQuantity } = useShoppingCartContext()
+export function ShoppingCartItem({ id, quantity }: CartItem) {
+  const { removeFromCart } = useShoppingCartContext()
+  const cartItem: ItemType | undefined = storeItems.find(
+    (item) =&gt; item.id === id
+  )
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (cartItem == null) <span class="cstat-no" title="statement not covered" >return null</span>
+&nbsp;
   return (
-    &lt;NavbarBs
-      sticky="top"
-      className="bg-white shadow-sm mb-3"
-      data-testid="navbar-wrapper"
+    &lt;Stack
+      direction="horizontal"
+      gap={2}
+      className="d-flex align-items-center"
+      data-testid="cart-item-wrapper"
     &gt;
-      &lt;Container&gt;
-        &lt;Nav className="me-auto" data-testid="navbar-link-container"&gt;
-          &lt;Nav.Link to="/" as={NavLink} role="home-link-test"&gt;
-            Home
-          &lt;/Nav.Link&gt;
-          &lt;Nav.Link to="/store" as={NavLink} role="store-link-test"&gt;
-            Store
-          &lt;/Nav.Link&gt;
-          &lt;Nav.Link to="/about" as={NavLink} role="about-link-test"&gt;
-            About
-          &lt;/Nav.Link&gt;
-        &lt;/Nav&gt;
-        {cartQuantity &gt; 0 &amp;&amp; (
-          &lt;Button
-            style={{ width: '3rem', height: '3rem', position: 'relative' }}
-            variant="outline-primary"
-            className="rounded-circle"
-            data-testid="navbar-cart-button"
-            onClick={openCart}
+      &lt;img
+        src={cartItem.imgUrl}
+        style={{ width: '125px', height: '75px', objectFit: 'cover' }}
+        data-testid="cart-item-image"
+      /&gt;
+      &lt;div className="me-auto"&gt;
+        &lt;div data-testid="cart-item-description"&gt;
+          {cartItem.name}{' '}
+          {quantity &gt; 1 &amp;&amp; (
+            &lt;span
+              className="text-muted"
+              style={{ fontSize: '.65rem' }}
+              data-testid="cart-item-units"
+            &gt;
+              x{quantity}
+            &lt;/span&gt;
+          )}
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;span
+            className="text-muted"
+            style={{ fontSize: '.75rem' }}
+            data-testid="cart-item-price-per-unit"
           &gt;
-            &lt;svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-              fill="currentColor"
-              data-testid="navbar-cart-button-svg"
-            &gt;
-              &lt;path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z" /&gt;
-            &lt;/svg&gt;
-            &lt;div
-              className="rounded-circle bg-danger d-flex justify-content-center align-items-center "
-              style={{
-                color: 'white',
-                width: '1.5rem',
-                height: '1.5rem',
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-                transform: 'translate(25%, 25%)',
-              }}
-              data-testid="navbar-cart-button-cart-count"
-            &gt;
-              {cartQuantity}
-            &lt;/div&gt;
-          &lt;/Button&gt;
-        )}
-      &lt;/Container&gt;
-    &lt;/NavbarBs&gt;
+            {formatCurrency(cartItem.price)}
+          &lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div data-testid="cart-item-price-for-all-quantity"&gt;
+        {formatCurrency(cartItem.price * quantity)}
+      &lt;/div&gt;
+      &lt;Button
+        variant="outline-danger"
+        size="sm"
+        onClick={() =&gt; removeFromCart(id)}
+        data-testid="delete-cart-item-btn"
+      &gt;
+        &amp;times;
+      &lt;/Button&gt;
+    &lt;/Stack&gt;
   )
 }
 &nbsp;
-{
-  /* 
-    For the reason why we use 1.5 rem comparitively to the parent/global style rem, refer Kyle video
-  */
-}
+// &amp;times; gives x symbol inside a button like a close button
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -271,16 +274,16 @@ export function Navbar(): JSX.Element {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-24T19:31:44.872Z
+                at 2024-01-24T20:11:18.815Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     

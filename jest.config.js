@@ -10,6 +10,8 @@ module.exports = {
     '!**/node_modules/**',
     '!**/vendor/**',
     '!**/src/setupDomTests.ts',
+    '!**/src/App.tsx',
+    '!**/src/index.tsx',
   ],
   coverageThreshold: {
     global: {
