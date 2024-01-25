@@ -1,0 +1,60 @@
+1. Running application locally using build file and webpack server:
+
+    In dev, webpack builds the application and stores the bundle.js inside build folder.
+
+    The build folder contains index.html file which has reference to src="bundle.js".
+
+    The bundle.js loads the javascript bundle from the server to the requested client browser.
+
+    The /public/imgs will not be included in the bundle.js as it is outside of src and will not be included in the webpack build.
+
+    To copy the /public/imgs asset files to build folder, we need to use CopyWebpackPlugin node module in webpack.common.js.
+        [{ from: './public/imgs', to: 'imgs' }] ---> copies asset from our local /public/imgs to build/imgs.
+            Reference: https://www.npmjs.com/package/copy-webpack-plugin and https://webpack.js.org/guides/asset-modules/
+
+
+    To run the application, we need to use command: serve -s build which serves the application on a http port. 
+        We cannot simply run the index.html file from the build file location, as it will be not reached by the internet.
+        This is why, we serve the application using webpack server running on some port (default: 3000).
+
+2. Hosting application using nginx server:
+
+    In production, the appication image will be put inside the nginx server, to serve the application from the 
+    nginx server (similar to webpack server in dev).
+
+    First try to run empty nginx server from docker hub.
+        command: docker run -it --rm -d -p 8080:80 --name web nginx
+            The above command will pull official nginx image from the hub and run the image.
+            We will be getting an entry page of the nginx server (localhost:8080). 
+
+3. Multistaging docker file with build and nginx:
+
+    First build the react app and name the built image as builder. 
+
+    Then put the built image inside nginx container so that all the contents of the build folder will be copied in to the nginx container.
+
+    The nginx container will access index.html file to start the application.
+
+        # Stage 1: Build the React app
+            FROM node:lts as builder
+            WORKDIR /app
+            COPY package.json ./
+            RUN npm install
+            COPY . ./
+            RUN npm run build
+
+        # Stage 2: Create the production image
+            FROM nginx:latest
+            COPY --from=builder /app/build /usr/share/nginx/html
+            EXPOSE 80
+            CMD ["nginx", "-g", "daemon off;"]
+
+        docker build command: docker build -f Dockerfile -t nginx-ts-image:0.1 .
+        docker run command: docker run -it --rm -d -p 8080:80 --name my-nginx-container  nginx-ts-image:0.1
+
+            Notes: 
+                -d : Detached mode is the best choice for running long-running tasks or services that you don't need to interact with directly. 
+                For example, you might run a web server or database in detached mode so that it can continue running even 
+                if you close the terminal window.
+    
+    url referred: https://medium.com/@mohamedbenkhemiswork576/how-to-dockerize-a-react-app-with-multi-stage-build-and-nginx-minimize-react-image-size-by-80-33a09ae20118

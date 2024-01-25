@@ -83,3 +83,8 @@
                 "Labels": {}
             }
         ]
+
+4. References:
+    # https://www.youtube.com/watch?v=5grbXvV_DSk --> Docker Networking Tutorial, ALL Network Types explained!
+    # https://www.youtube.com/watch?v=bKFMS5C4CG0 --> Docker networking is CRAZY!! 
+    # https://docs.docker.com/network/ --> docker documentation on networking
