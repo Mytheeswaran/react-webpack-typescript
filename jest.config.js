@@ -1,6 +1,7 @@
 module.exports = {
   verbose: true,
   preset: 'ts-jest',
+  transformIgnorePatterns: ['/node_modules/sinon/pkg/sinon-esm.js'],
   testEnvironment: 'jsdom',
   moduleNameMapper: {},
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
