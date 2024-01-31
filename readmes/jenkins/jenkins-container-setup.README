@@ -1,0 +1,23 @@
+1. Run jenkins container from docker hub:
+    Usage doc: https://github.com/jenkinsci/docker/blob/master/README.md
+    command: docker run -p 8080:8080 -p 50000:50000 -d -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+        In the above command, we create volume named jenkins_home, to store all the cache related to jenkins application like username etc in the host.
+
+    Once installed, get the admin password to start jenkins:
+
+        PS D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript> docker ps
+            CONTAINER ID   IMAGE                 COMMAND                  CREATED          STATUS          PORTS                                              NAMES
+            5df19ee0b538   jenkins/jenkins:lts   "/usr/bin/tini -- /u…"   52 seconds ago   Up 51 seconds   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   zen_lovelace
+    
+        PS D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript> docker logs 5df19ee0b538
+
+            We get the admin password:
+                Jenkins initial setup is required. An admin user has been created and a password generated.
+                Please use the following password to proceed to installation:
+                a52139f426b849788386f172dd94fdf6
+                This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+
+2. Copy and paste the password for installation and enter the username and password:
+    username: jenkins-user
+    password: jenkins
+    name: jenkins
