@@ -1,14 +1,19 @@
 import { Form } from 'react-bootstrap'
 import React, { useState } from 'react'
 import { useDebounce } from '../hooks/useDebounce'
+import { useThrottle } from '../hooks/useThrottle'
 
 export function About(): JSX.Element {
   const [defaultInput, setDefaultInput] = useState('')
   const [debouncedInput, setDebouncedInput] = useState('')
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleChange = useDebounce((...args: any[]) => {
+  const handleDebouncedChange = useDebounce((...args: any[]) => {
     setDebouncedInput(args[0])
+  }, 1000)
+
+  const handleThrottledChange = useThrottle((...args: any[]) => {
+    setDefaultInput(args[0])
   }, 1000)
 
   return (
@@ -17,7 +22,7 @@ export function About(): JSX.Element {
       <Form.Group className="mb-3">
         <Form.Label>Search about</Form.Label>
         <Form.Control
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e) => handleThrottledChange(e.target.value)}
         ></Form.Control>
       </Form.Group>
 
