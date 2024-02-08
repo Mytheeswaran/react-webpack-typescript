@@ -6,20 +6,42 @@ import { Container } from 'react-bootstrap'
 import { Home } from './pages/Home'
 import { Store } from './pages/Store'
 import { About } from './pages/About'
+import { Login } from './pages/Login'
 import { Navbar } from './components/Navbar'
 import { ShoppingCartProvider } from './contexts/ShoppingCartContext'
+import { AuthContextProvider } from './contexts/AuthContext'
+import { AuthCheck } from './pages/AuthCheck'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 export const App = (): JSX.Element => {
   return (
-    <ShoppingCartProvider>
-      <Navbar />
-      <Container className="mb-4">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/store" element={<Store />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </Container>
-    </ShoppingCartProvider>
+    <AuthContextProvider>
+      <ShoppingCartProvider>
+        <Navbar />
+        <Container className="mb-4">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/store" element={<Store />} />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/login"
+              element={
+                <ProtectedRoute accessBy="non-authenticated-users">
+                  <Login />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/auth-check"
+              element={
+                <ProtectedRoute accessBy="authenticated-users">
+                  <AuthCheck />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </Container>
+      </ShoppingCartProvider>
+    </AuthContextProvider>
   )
 }

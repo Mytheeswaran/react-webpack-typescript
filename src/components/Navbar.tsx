@@ -1,9 +1,11 @@
 import { Navbar as NavbarBs, Container, Nav, Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { useShoppingCartContext } from '../contexts/ShoppingCartContext'
+import { useAuthContext } from '../contexts/AuthContext'
 
 export function Navbar(): JSX.Element {
   const { openCart, cartQuantity } = useShoppingCartContext()
+  const { user, logoutApiCall } = useAuthContext()
   return (
     <NavbarBs
       sticky="top"
@@ -21,7 +23,32 @@ export function Navbar(): JSX.Element {
           <Nav.Link to="/about" as={NavLink} role="about-link-test">
             About
           </Nav.Link>
+          <Nav.Link to="/auth-check" as={NavLink} role="about-link-test">
+            Auth Check
+          </Nav.Link>
         </Nav>
+        {user ? (
+          <>
+            {user.email} &nbsp;&nbsp;
+            <Nav data-testid="navbar-link-container">
+              <Button
+                size="sm"
+                color="primary"
+                onClick={logoutApiCall}
+                role="logout-button-test"
+              >
+                Logout
+              </Button>
+            </Nav>
+          </>
+        ) : (
+          <Nav data-testid="navbar-link-container">
+            <Nav.Link to="/login" as={NavLink} role="login-link-test">
+              Login
+            </Nav.Link>
+          </Nav>
+        )}
+
         {cartQuantity > 0 && (
           <Button
             style={{ width: '3rem', height: '3rem', position: 'relative' }}
@@ -62,6 +89,7 @@ export function Navbar(): JSX.Element {
 
 {
   /* 
-    For the reason why we use 1.5 rem comparitively to the parent/global style rem, refer Kyle video
+    1. For the reason why we use 1.5 rem comparitively to the parent/global style rem, refer Kyle video
+    2. Check className="me-auto" for Login right positioning
   */
 }
