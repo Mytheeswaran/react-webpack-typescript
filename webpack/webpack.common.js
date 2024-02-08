@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
@@ -36,13 +37,21 @@ module.exports = {
     // bundled file should be placed inside the below directory
     path: path.resolve(__dirname, '..', './build'),
     filename: 'bundle.js',
+    // publicPath: '/imgs/',
   },
   plugins: [
     new HtmlWebpackPlugin({
       // injects bundle.js file in to index.html file and places the html file in the build folder automatically
       template: path.resolve(__dirname, '..', './src/index.html'),
     }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: './public/imgs', to: 'imgs' }],
+      options: {
+        concurrency: 100,
+      },
+    }),
   ],
   stats: 'errors-only',
 }
 // We dont need to specify the <script> tag in index.html file, the HtmlWebpackPlugin will take care
+// https://www.npmjs.com/package/copy-webpack-plugin --> copy assets from public to webpack public folder to access files

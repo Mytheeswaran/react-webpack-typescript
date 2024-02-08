@@ -1,4 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from 'react'
+import { ShoppingCart } from '../components/ShoppingCart'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 type ShoppingCartContextType = {
   getItemQuantity: (id: number) => number
@@ -7,7 +9,7 @@ type ShoppingCartContextType = {
   removeFromCart: (id: number) => void
   openCart: () => void
   closeCart: () => void
-  cartItems: CartItems[]
+  cartItems: CartItem[]
   cartQuantity: number
 }
 
@@ -15,7 +17,7 @@ type ShoppingCartProviderProps = {
   children: ReactNode
 }
 
-type CartItems = {
+export type CartItem = {
   id: number
   quantity: number
 }
@@ -27,8 +29,10 @@ export function useShoppingCartContext() {
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
-  const [cartItems, setCartItems] = useState<CartItems[]>([])
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+    'cart-items',
+    []
+  )
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const getItemQuantity = (id: number) => {
@@ -98,6 +102,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }}
     >
       {children}
+
+      {isOpen ? <ShoppingCart isOpen={isOpen} /> : null}
     </ShoppingCartContext.Provider>
   )
 }
@@ -132,5 +138,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
         inventory.find((item)=>item.name === "oranges")?.quantity || 0
           ans: 0
+
+      
+    5. useLocalStorage() --> https://www.geeksforgeeks.org/reactjs-uselocalstorage-custom-hook/ 
   */
 }

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { Row, Col, Container, Form, Button } from 'react-bootstrap'
-import { useAuthContext } from '../context/AuthContext'
+import { useAuthContext } from '../contexts/AuthContext'
 
 export function Login(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,7 +1,7 @@
 import { Navbar as NavbarBs, Container, Nav, Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import { useShoppingCartContext } from '../context/ShoppingCartContext'
-import { useAuthContext } from '../context/AuthContext'
+import { useShoppingCartContext } from '../contexts/ShoppingCartContext'
+import { useAuthContext } from '../contexts/AuthContext'
 
 export function Navbar(): JSX.Element {
   const { openCart, cartQuantity } = useShoppingCartContext()

@@ -1,0 +1,90 @@
+1. Our laptop IP config
+    C:\Users\user>ipconfig
+
+    Windows IP Configuration
+
+    Ethernet adapter Ethernet:
+
+        Connection-specific DNS Suffix  . :
+        Link-local IPv6 Address . . . . . : fe80::98dc:5bc1:827c:4217%4
+        IPv4 Address. . . . . . . . . . . : 192.168.56.1
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        Default Gateway . . . . . . . . . :
+
+    Wireless LAN adapter Local Area Connection* 1:
+
+        Media State . . . . . . . . . . . : Media disconnected
+        Connection-specific DNS Suffix  . :
+
+    Wireless LAN adapter Local Area Connection* 10:
+
+        Media State . . . . . . . . . . . : Media disconnected
+        Connection-specific DNS Suffix  . :
+
+    Wireless LAN adapter Wi-Fi:
+
+        Connection-specific DNS Suffix  . :
+        Link-local IPv6 Address . . . . . : fe80::8cd4:e0f9:a837:afb5%17
+        IPv4 Address. . . . . . . . . . . : 192.168.0.17
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        Default Gateway . . . . . . . . . : 192.168.0.1
+
+    Ethernet adapter vEthernet (WSL):
+
+        Connection-specific DNS Suffix  . :
+        Link-local IPv6 Address . . . . . : fe80::fc52:fea1:df:d8c8%47
+        IPv4 Address. . . . . . . . . . . : 172.21.0.1
+        Subnet Mask . . . . . . . . . . . : 255.255.240.0
+        Default Gateway . . . . . . . . . :
+
+2. List Docker Network:
+
+    PS D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript> docker network ls
+    NETWORK ID     NAME      DRIVER    SCOPE
+    a40866b873d8   bridge    bridge    local
+    682aba31472e   host      host      local
+
+3. Inspect Bridge Interface:
+    PS D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript> docker network inspect bridge
+
+        [
+            {
+                "Name": "bridge",
+                "Id": "a40866b873d81e17e29fcc98a672597302b6ccf0464ff47107daadf9864c2372",
+                "Created": "2024-01-16T22:37:18.783837434Z",
+                "Driver": "bridge",
+                "EnableIPv6": false,
+                "IPAM": {
+                    "Driver": "default",
+                    "Options": null,
+                    "Config": [
+                        {
+                            "Subnet": "172.17.0.0/16",
+                            "Gateway": "172.17.0.1"
+                        }
+                    ]
+                },
+                "Internal": false,
+                "Attachable": false,
+                "Ingress": false,
+                "ConfigFrom": {
+                    "Network": ""
+                },
+                "ConfigOnly": false,
+                "Containers": {},
+                "Options": {
+                    "com.docker.network.bridge.default_bridge": "true",
+                    "com.docker.network.bridge.enable_icc": "true",
+                    "com.docker.network.bridge.enable_ip_masquerade": "true",
+                    "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+                    "com.docker.network.bridge.name": "docker0",
+                    "com.docker.network.driver.mtu": "1500"
+                },
+                "Labels": {}
+            }
+        ]
+
+4. References:
+    # https://www.youtube.com/watch?v=5grbXvV_DSk --> Docker Networking Tutorial, ALL Network Types explained!
+    # https://www.youtube.com/watch?v=bKFMS5C4CG0 --> Docker networking is CRAZY!! 
+    # https://docs.docker.com/network/ --> docker documentation on networking
