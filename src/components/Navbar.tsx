@@ -23,14 +23,14 @@ export function Navbar(): JSX.Element {
           <Nav.Link to="/about" as={NavLink} role="about-link-test">
             About
           </Nav.Link>
-          <Nav.Link to="/auth-check" as={NavLink} role="about-link-test">
+          <Nav.Link to="/auth-check" as={NavLink} role="auth-link-test">
             Auth Check
           </Nav.Link>
         </Nav>
         {user ? (
           <>
             {user.email} &nbsp;&nbsp;
-            <Nav data-testid="navbar-link-container">
+            <Nav data-testid="navbar-logout-btn-container">
               <Button
                 size="sm"
                 color="primary"
@@ -42,7 +42,7 @@ export function Navbar(): JSX.Element {
             </Nav>
           </>
         ) : (
-          <Nav data-testid="navbar-link-container">
+          <Nav data-testid="navbar-login-btn-container">
             <Nav.Link to="/login" as={NavLink} role="login-link-test">
               Login
             </Nav.Link>
