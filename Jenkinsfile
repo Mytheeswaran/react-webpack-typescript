@@ -10,7 +10,7 @@ pipeline{
 
         stage("build"){
             steps {
-                sh ‘docker build -f -t nginx-ts-jenkins .’
+                sh 'docker build -t nginx-jenkins:latest .'
             }
         }
 
