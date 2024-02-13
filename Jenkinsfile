@@ -10,7 +10,7 @@ pipeline{
 
         stage("build"){
             steps {
-                sh ‘docker build -f -t nginx-ts-jenkins:0.1 .’
+                sh ‘docker build -f -t nginx-ts-jenkins:${BUILD_NUMBER} .’
             }
         }
 
