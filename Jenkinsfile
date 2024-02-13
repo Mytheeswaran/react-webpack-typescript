@@ -11,7 +11,7 @@ pipeline{
 
         stage("build"){
             steps{
-                step{
+                script{
                     app = docker.build("getintodevops/hellonode")
                 }
             }
