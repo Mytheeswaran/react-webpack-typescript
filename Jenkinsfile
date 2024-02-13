@@ -3,17 +3,14 @@ pipeline{
 
     stages{
         stage('Clone repository') {
-            /* Let's make sure we have the repository cloned to our workspace */
             steps{
                 checkout scm
             }
         }
 
         stage("build"){
-            steps{
-                script{
-                    app = docker.build("getintodevops/hellonode")
-                }
+            steps {
+                sh ‘docker build -f -t nginx-ts-jenkins:0.1 .’
             }
         }
 
