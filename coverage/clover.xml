@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1707435032926" clover="3.2.0">
-  <project timestamp="1707435032926" name="All files">
-    <metrics statements="219" coveredstatements="137" conditionals="60" coveredconditionals="39" methods="69" coveredmethods="44" elements="348" coveredelements="220" complexity="0" loc="219" ncloc="219" packages="6" files="17" classes="17"/>
+<coverage generated="1707852816895" clover="3.2.0">
+  <project timestamp="1707852816896" name="All files">
+    <metrics statements="219" coveredstatements="140" conditionals="60" coveredconditionals="39" methods="69" coveredmethods="46" elements="348" coveredelements="225" complexity="0" loc="219" ncloc="219" packages="6" files="17" classes="17"/>
     <package name="components">
       <metrics statements="65" coveredstatements="54" conditionals="27" coveredconditionals="17" methods="15" coveredmethods="14"/>
       <file name="Navbar.tsx" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\components\Navbar.tsx">
@@ -175,15 +175,15 @@
       </file>
     </package>
     <package name="hooks">
-      <metrics statements="32" coveredstatements="18" conditionals="5" coveredconditionals="3" methods="9" coveredmethods="5"/>
+      <metrics statements="32" coveredstatements="21" conditionals="5" coveredconditionals="3" methods="9" coveredmethods="7"/>
       <file name="useDebounce.ts" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\hooks\useDebounce.ts">
-        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="11" type="stmt"/>
+        <line num="7" count="11" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
       </file>
       <file name="useLocalStorage.ts" path="D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\src\hooks\useLocalStorage.ts">
         <metrics statements="14" coveredstatements="12" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>

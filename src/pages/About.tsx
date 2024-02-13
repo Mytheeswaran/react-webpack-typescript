@@ -22,7 +22,7 @@ export function About(): JSX.Element {
       <Form.Group className="mb-3">
         <Form.Label>Search about</Form.Label>
         <Form.Control
-          onChange={(e) => handleThrottledChange(e.target.value)}
+          onChange={(e) => handleDebouncedChange(e.target.value)}
         ></Form.Control>
       </Form.Group>
 
