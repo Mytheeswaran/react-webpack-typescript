@@ -2,10 +2,10 @@ pipeline{
     agent any
 
     stages{
-        stage("build"){
-            steps{
-                echo 'building the application...'
-            }
+        stage('Clone repository') {
+            /* Let's make sure we have the repository cloned to our workspace */
+
+            checkout scm
         }
 
         stage("test"){
