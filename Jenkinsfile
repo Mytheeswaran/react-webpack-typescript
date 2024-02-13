@@ -9,9 +9,9 @@ pipeline{
             }
         }
 
-        stage("test"){
+        stage("build"){
             steps{
-                echo 'testing the application...'
+                app = docker.build("getintodevops/hellonode")
             }
         }
 
