@@ -18,7 +18,9 @@ pipeline{
             /*Java techie -- https://www.youtube.com/watch?v=PKcGy9oPVXg*/
             /*docker plugin is not found: https://stackoverflow.com/questions/62576978/cant-find-docker-plugin-on-jenkins*/
             steps {
-                sh 'docker build -t nginx-jenkins:latest .'
+                script{
+                    sh 'docker build -t nginx-jenkins:latest .'
+                } 
             }
         }
 
