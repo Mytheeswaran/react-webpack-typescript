@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-        Docker 'latest'
+        Docker
     }
 
     stages{
