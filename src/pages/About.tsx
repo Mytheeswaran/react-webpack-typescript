@@ -1,5 +1,5 @@
 import { Form } from 'react-bootstrap'
-import React, { useState, useCallback, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
 import { debounce } from '../hooks/useDebounce'
 import { useThrottle } from '../hooks/useThrottle'
 
@@ -7,12 +7,14 @@ export function About(): JSX.Element {
   const [defaultInput, setDefaultInput] = useState('')
   const [debouncedInput, setDebouncedInput] = useState('')
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleDebouncedChange = useCallback(() => {
-    debounce((...args: any[]) => {
-      setDebouncedInput(args[0])
-    }, 1000)
-  }, [])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, react-hooks/exhaustive-deps
+  const debouncedChange = debounce((...args: any[]) => {
+    setDebouncedInput(args[0])
+  }, 1000)
+
+  const handleChange = (e: any) => {
+    debouncedChange(e.target.value)
+  }
 
   const handleThrottledChange = useThrottle((...args: any[]) => {
     setDefaultInput(args[0])
@@ -23,9 +25,7 @@ export function About(): JSX.Element {
       <div>About-Page</div>
       <Form.Group className="mb-3">
         <Form.Label>Search about</Form.Label>
-        <Form.Control
-          onChange={(e) => handleDebouncedChange(e.target.value)}
-        ></Form.Control>
+        <Form.Control onChange={handleChange}></Form.Control>
       </Form.Group>
 
       <div>Default Input: {defaultInput}</div>
@@ -35,7 +35,7 @@ export function About(): JSX.Element {
 }
 
 {
-  /* 
+  /* https://www.developerway.com/posts/debouncing-in-react
     Older versions of debounce before the top code
 
     ==========================================before useDebounce custom hook==============

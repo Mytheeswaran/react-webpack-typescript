@@ -24,6 +24,7 @@ pipeline{
         //     /*docker compose -- https://www.cloudbees.com/blog/how-to-install-and-run-jenkins-with-docker-compose*/
         //     /*Java techie -- https://www.youtube.com/watch?v=PKcGy9oPVXg*/
         //     /*docker plugin is not found: https://stackoverflow.com/questions/62576978/cant-find-docker-plugin-on-jenkins*/
+        //     /*https://www.jenkins.io/doc/book/pipeline/syntax/*/
         //     steps {
         //         script{
         //             sh 'docker build -t nginx-jenkins:latest .'

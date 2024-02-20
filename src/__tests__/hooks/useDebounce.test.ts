@@ -1,4 +1,4 @@
-import { useDebounce } from '../../hooks/useDebounce'
+import { debounce } from '../../hooks/useDebounce'
 
 afterEach(() => {
   jest.useRealTimers()
@@ -8,7 +8,7 @@ test('debounce', async () => {
   jest.useFakeTimers()
 
   const func = jest.fn()
-  const debouncedFunc = useDebounce(func, 1000)
+  const debouncedFunc = debounce(func, 1000)
 
   // Call it immediately
   debouncedFunc()
