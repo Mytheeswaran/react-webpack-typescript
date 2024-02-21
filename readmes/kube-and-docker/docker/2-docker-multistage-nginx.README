@@ -71,3 +71,12 @@
             CMD ["nginx", "-g", "daemon off;"]
     
     url referred: https://medium.com/@mohamedbenkhemiswork576/how-to-dockerize-a-react-app-with-multi-stage-build-and-nginx-minimize-react-image-size-by-80-33a09ae20118
+
+5. Pushing docker image to Docker hub
+    Docker Hub Url: https://hub.docker.com/repository/docker/mytheeswaran/my-repository/general
+    1. Tag the existing image with new name that matches the docker hub repository:
+        command: docker tag nginx-ts-image:0.4 mytheeswaran/my-repository:0.2
+    2. Push the docker image 
+        command: docker push mytheeswaran/my-repository:0.2
+    3. Check by pulling the docker image:
+        command: docker pull mytheeswaran/my-repository:0.2

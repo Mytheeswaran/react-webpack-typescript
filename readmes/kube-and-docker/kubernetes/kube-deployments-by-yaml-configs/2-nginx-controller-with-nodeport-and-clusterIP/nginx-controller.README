@@ -119,3 +119,6 @@ D:\React\react-webpack-typescript\kubectl-deployments-yaml\2-nginx-clusterIP>min
 
 Reference url for ingress controller without nginx:
     https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+
+Oracle: Setting Up an Nginx Ingress Controller on a Cluster
+    https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengsettingupingresscontroller.htm

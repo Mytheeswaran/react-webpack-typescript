@@ -1,19 +1,24 @@
 import { Form } from 'react-bootstrap'
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { debounce } from '../hooks/useDebounce'
 import { useThrottle } from '../hooks/useThrottle'
 
 export function About(): JSX.Element {
   const [defaultInput, setDefaultInput] = useState('')
   const [debouncedInput, setDebouncedInput] = useState('')
+  const myRef = useRef(
+    debounce((...args: any[]) => {
+      setDebouncedInput(args[0])
+    }, 1000)
+  )
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, react-hooks/exhaustive-deps
-  const debouncedChange = debounce((...args: any[]) => {
-    setDebouncedInput(args[0])
-  }, 1000)
+  // const debouncedChange = debounce((...args: any[]) => {
+  //   setDebouncedInput(args[0])
+  // }, 1000)
 
-  const handleChange = (e: any) => {
-    debouncedChange(e.target.value)
+  const handleChange = (e) => {
+    myRef.current(e.target.value)
   }
 
   const handleThrottledChange = useThrottle((...args: any[]) => {
