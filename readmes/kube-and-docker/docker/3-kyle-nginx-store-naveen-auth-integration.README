@@ -1,0 +1,42 @@
+1. Build and run Naveen Auth service:
+    Docker build command:
+        docker build -f Dockerfile -t auth-refresh-token-naveen:0.3 .
+
+    Docker run command:
+        docker run -it --rm -d -p 4000:4000 --name my-auth-refresh-container auth-refresh-token-naveen:0.3
+
+2. Build and run Kyle Store container:
+    Docker build command:
+        docker build -f Dockerfile -t nginx-ts-image-with-login:0.6 .
+
+    Docker run command:
+        docker run -it --rm -d -p 8080:80 --name my-nginx-container nginx-ts-image-with-login:0.6
+
+=======================================================
+
+Check Auth service using Postman:
+
+Step 1:
+
+    Hit api with POST ---> http://localhost:4000/auth/login and
+    Body:
+        {
+            "email": "naveen@techseeker.com",
+            "password":"12345"
+        }
+    Get the cookie from Response section:
+
+        auth-cookie: j%3A%7B%22accessToken%22%3A%22eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hdmVlbkB0ZWNoc2Vla2VyLmNvbSIsImZpcnN0TmFtZSI6Im5hdmVlbiIsImlkIjoxLCJsYXN0TmFtZSI6ImJvbW1pZGkiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE3MDg2NDc5NTgsImV4cCI6MTcwODY1MTU1OH0.XQqQKfPtgfr-IpfqpldzTD_w1YdO5bjkr83DlKlfGFA%22%2C%22refreshToken%22%3A%22wCH7PEZy1AbvsASAPyM9qo7Bus3qqy%22%7D
+
+Step 2:
+
+    Hit api with GET ---> http://localhost:4000/liked-movies
+
+    Add Header with the below Key and Value
+        auth-cookie: j%3A%7B%22accessToken%22%3A%22eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hdmVlbkB0ZWNoc2Vla2VyLmNvbSIsImZpcnN0TmFtZSI6Im5hdmVlbiIsImlkIjoxLCJsYXN0TmFtZSI6ImJvbW1pZGkiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE3MDg2NDU3NjIsImV4cCI6MTcwODY0NjM2Mn0.LlegxgqnBhBs7grXuIYfaqcKjTupQZclfIEH6kmZMSU%22%2C%22refreshToken%22%3A%22wCH7PEZy1AbvsASAPyM9qo7Bus3qqy%22%7D
+
+    If the cookie is not working, use Authorization with Type as Bearer Token/JWT token, and paste the below in the Token field
+    The below string, we can get from the cookie tab in the browser inspect 
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpVCJ9.eyJlbWFpbCI6Im5hdmVlbkB0ZWNoc2Vla2VyLmNvbSIsImZpcnN0TmFtZSI6Im5hdmVlbiIsImlkIjoxLCJsYXN0TmFtZSI6ImJvbW1pZGkiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE3MDg2NDU4MTEsImV4cCI6MTcwODY0NjQxMX0.97Ep9gV2UmWIonZf3KK_30IcqjTKn4od-wHUcU8ua8g","refreshToken":"wCH7PEZy1AbvsASAPyM9qo7Bus3qqy
+
+
