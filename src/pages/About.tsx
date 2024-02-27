@@ -1,24 +1,31 @@
+/* eslint-disable react/display-name */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Form } from 'react-bootstrap'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { debounce } from '../hooks/useDebounce'
 import { useThrottle } from '../hooks/useThrottle'
 
-export function About(): JSX.Element {
+export const About = React.memo(() => {
   const [defaultInput, setDefaultInput] = useState('')
   const [debouncedInput, setDebouncedInput] = useState('')
-  const myRef = useRef(
-    debounce((...args: any[]) => {
-      setDebouncedInput(args[0])
-    }, 1000)
-  )
+
+  // const myRef = useRef(
+  //   debounce((...args: any[]) => {
+  //     setDebouncedInput(args[0])
+  //   }, 1000)
+  // )
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, react-hooks/exhaustive-deps
-  // const debouncedChange = debounce((...args: any[]) => {
-  //   setDebouncedInput(args[0])
-  // }, 1000)
+  const debouncedChange = useCallback(
+    debounce((...args: any[]) => {
+      setDebouncedInput(args[0])
+    }, 1000),
+    []
+  )
 
   const handleChange = (e) => {
-    myRef.current(e.target.value)
+    // myRef.current(e.target.value)
+    debouncedChange(e.target.value)
   }
 
   const handleThrottledChange = useThrottle((...args: any[]) => {
@@ -37,10 +44,11 @@ export function About(): JSX.Element {
       <div>Debounced Input: {debouncedInput}</div>
     </>
   )
-}
+})
 
 {
-  /* https://www.developerway.com/posts/debouncing-in-react
+  /* https://www.developerway.com/posts/debouncing-in-react 
+  https://dev.to/brettthurs10/prevent-re-renders-with-useref-1fgf -- useRef for rerendering issue
     Older versions of debounce before the top code
 
     ==========================================before useDebounce custom hook==============
