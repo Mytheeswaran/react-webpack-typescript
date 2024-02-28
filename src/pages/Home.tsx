@@ -1,5 +1,6 @@
 import React from 'react'
+import Hero from '../components/hero/Hero'
 
 export function Home(): JSX.Element {
-  return <div role="home">Home-Page</div>
+  return <Hero />
 }

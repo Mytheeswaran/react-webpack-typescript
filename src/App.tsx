@@ -13,12 +13,17 @@ import { AuthContextProvider } from './contexts/AuthContext'
 import { AuthCheck } from './pages/AuthCheck'
 import { ProtectedRoute } from './components/ProtectedRoute'
 
+import { GlobalStyle } from './globalStyles'
+import { Signup } from './pages/SignupPage'
+import { Pricing } from './pages/PricingPage'
+
 export const App = (): JSX.Element => {
   return (
     <AuthContextProvider>
       <ShoppingCartProvider>
         <Navbar />
         <Container className="mb-4">
+          <GlobalStyle />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/store" element={<Store />} />
