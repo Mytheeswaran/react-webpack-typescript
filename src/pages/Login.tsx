@@ -31,7 +31,12 @@ export function Login(): JSX.Element {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={password}></Form.Control>
             </Form.Group>
-            <Button variant="primary" type="button" onClick={loginHandler}>
+            <Button
+              variant="primary"
+              type="button"
+              onClick={loginHandler}
+              data-testid="login-button-test"
+            >
               Login
             </Button>
           </Col>
