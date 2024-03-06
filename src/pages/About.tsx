@@ -1,24 +1,15 @@
 import { Form } from 'react-bootstrap'
 import { useState } from 'react'
-import { debounce } from '../hooks/useDebounce'
+import { useDebounce } from '../hooks/useDebounce'
 // import { useThrottle } from '../hooks/useThrottle'
 
 export const About = () => {
-  const [defaultInput, setDefaultInput] = useState('')
-  const [debouncedInput, setDebouncedInput] = useState('')
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, react-hooks/exhaustive-deps
-  const debouncedChange = debounce((...args: any[]) => {
-    setDebouncedInput(args[0])
-  }, 1000)
+  const [defaultInput, setDefaultInput] = useState<string>('')
+  const debouncedInput = useDebounce(defaultInput, 1000)
 
   const handleChange = (e) => {
-    debouncedChange(e.target.value)
+    setDefaultInput(e.target.value)
   }
-
-  // const handleThrottledChange = useThrottle((...args: any[]) => {
-  //   setDefaultInput(args[0])
-  // }, 1000)
 
   return (
     <>
@@ -28,16 +19,45 @@ export const About = () => {
         <Form.Control onChange={handleChange}></Form.Control>
       </Form.Group>
 
-      <div>Default Input: {defaultInput}</div>
+      {/* <div>Default Input: {defaultInput}</div> */}
       <div>Debounced Input: {debouncedInput}</div>
     </>
   )
 }
 
 {
-  /* https://www.developerway.com/posts/debouncing-in-react 
-  https://dev.to/brettthurs10/prevent-re-renders-with-useref-1fgf -- useRef for rerendering issue
+  /* 
+    https://www.developerway.com/posts/debouncing-in-react 
+    https://dev.to/brettthurs10/prevent-re-renders-with-useref-1fgf -- useRef for rerendering issue
+    
     Older versions of debounce before the top code
+    =======================================hook that updates state inside main component==============
+      export const About = () => {
+        const [defaultInput, setDefaultInput] = useState('')
+        const [debouncedInput, setDebouncedInput] = useState('')
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any, react-hooks/exhaustive-deps
+        const debouncedChange = debounce((...args: any[]) => {
+          setDebouncedInput(args[0])
+        }, 1000)
+
+        const handleChange = (e) => {
+          debouncedChange(e.target.value)
+        }
+
+        return (
+          <>
+            <div>About-Page</div>
+            <Form.Group className="mb-3">
+              <Form.Label>Search about</Form.Label>
+              <Form.Control onChange={handleChange}></Form.Control>
+            </Form.Group>
+
+            <div>Default Input: {defaultInput}</div>
+            <div>Debounced Input: {debouncedInput}</div>
+          </>
+        )
+      }
 
     ==========================================before useDebounce custom hook==============
       export function About(): JSX.Element {
