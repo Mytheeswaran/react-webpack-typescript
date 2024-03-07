@@ -8,8 +8,6 @@ pipeline{
             }
         }
 
-        agent { label 'my-machine-agent' }
-
         stage("test") {
             agent { label 'my-machine-agent' }
             steps{
