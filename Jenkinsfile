@@ -11,7 +11,7 @@ pipeline{
         stage("test") {
             agent { label 'my-machine-agent' }
             steps{
-                sh 'echo hello from my-machine node'
+                echo 'echo hello from my-machine node'
             }
         }
 
