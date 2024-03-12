@@ -18,3 +18,5 @@ export function useThrottle(cb: (...args: any[]) => void, delay: number) {
     }, 1000)
   }
 }
+
+// take ref: https://www.youtube.com/watch?v=VDKMODA168A
