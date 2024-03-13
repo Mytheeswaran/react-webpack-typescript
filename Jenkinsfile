@@ -1,11 +1,11 @@
 pipeline{
     agent {
-        docker { image 'node:20.11.1-alpine3.19' }
+        Dockerfile true
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                echo 'done'
             }
         }
     }
@@ -26,3 +26,5 @@ pipeline{
     //         } 
     //     }
     // }
+
+    // ref: cloud bees: https://www.youtube.com/watch?v=ymI02j-hqpU
