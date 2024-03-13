@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent { label 'my-machine-agent' }
     stages {
         stage('Test') {
             agent {
