@@ -5,7 +5,7 @@ pipeline{
         stage("build") {
             agent { label 'my-machine-agent' }
             steps{
-                echo 'echo hello from my-machine node'
+                sh 'docker ps'
             }
         }
     }
