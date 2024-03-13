@@ -1,11 +1,11 @@
 pipeline{
-    agent any
-
-    stages{
-        stage("build") {
-            agent { label 'my-machine-agent' }
-            steps{
-                sh 'docker ps'
+    agent {
+        docker { image 'node:20.11.1-alpine3.19' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
             }
         }
     }
