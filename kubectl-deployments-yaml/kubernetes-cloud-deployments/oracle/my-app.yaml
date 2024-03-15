@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: my-app
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -14,9 +14,11 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: us-central1-docker.pkg.dev/ultimate-bit-416621/my-artifact-registry/sample-image:latest
+          image: ap-hyderabad-1.ocir.io/axgkvpz0p9kv/my-container-repo:latest
           ports:
             - containerPort: 80
+      imagePullSecrets:
+        - name: mysecret
 ---
 apiVersion: v1
 kind: Service
