@@ -1,17 +1,18 @@
-import { http } from 'msw'
+// import { http } from 'msw' // msw supports graphql too!
 
-export const handlers = [
-  http.get('http://localhost:4000/auth/login', (req, res, context) => {
-    return res(
-      context.status(200),
-      context.json([
-        {
-          name: 'mytheeswaran',
-        },
-        {
-          name: 'Baskaran',
-        },
-      ])
-    )
-  }),
+const handlers: any = [
+  // http.post('/login', async (req, res, ctx) => {
+  //   return res(
+  //     ctx.json([
+  //       {
+  //         name: 'mytheeswaran',
+  //       },
+  //       {
+  //         name: 'Baskaran',
+  //       },
+  //     ])
+  //   )
+  // }),
 ]
+
+export { handlers }
