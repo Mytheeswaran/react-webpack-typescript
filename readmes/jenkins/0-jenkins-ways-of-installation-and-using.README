@@ -1,7 +1,0 @@
-Ref:
-1. Run jenkins as application as a docker container:
-    https://octopus.com/blog/jenkins-docker-install-guide
-
-2. Install Jenkins on Windows:
-    https://octopus.com/blog/jenkins-install-guide-windows-linux
-    video: https://www.youtube.com/watch?v=XuMrEDA8cAI
