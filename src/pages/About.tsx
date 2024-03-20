@@ -1,11 +1,12 @@
 import { Form } from 'react-bootstrap'
 import { useState } from 'react'
 import { useDebounce } from '../hooks/useDebounce'
-// import { useThrottle } from '../hooks/useThrottle'
+import { useThrottle } from '../hooks/useThrottle'
 
 export const About = () => {
   const [defaultInput, setDefaultInput] = useState<string>('')
   const debouncedInput = useDebounce(defaultInput, 1000)
+  const throttledInput = useThrottle(defaultInput, 1000)
 
   const handleChange = (e) => {
     setDefaultInput(e.target.value)
@@ -21,6 +22,7 @@ export const About = () => {
 
       {/* <div>Default Input: {defaultInput}</div> */}
       <div>Debounced Input: {debouncedInput}</div>
+      <div>Throttled Input: {throttledInput}</div>
     </>
   )
 }

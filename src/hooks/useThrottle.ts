@@ -1,22 +1,15 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function useThrottle(cb: (...args: any[]) => void, delay: number) {
-  let shouldWait = false
-  // console.log('usethrottle invoking')
+import { useEffect, useState, useRef } from 'react'
 
-  return (...args: any[]) => {
-    // console.log('=====Entering the function==========')
-    if (shouldWait === true) {
-      // console.log('checking returning is happening')
-      return
-    }
+export function useThrottle(input: any, delay: number) {
+  const [throttled, setThrottled] = useState('')
+  const lastExecuted = useRef(Date.now()) // check Date.now is giving false ms check on date function
+  console.log('diff', Date.now() - lastExecuted.current)
 
-    cb(...args)
-    shouldWait = true
-
-    setTimeout(() => {
-      shouldWait = false
-    }, 1000)
-  }
+  // if (Date.now() - lastExecuted.current > delay) {
+  //   setThrottled(input)
+  //   // lastExecuted.current = Date.now()
+  // }
+  // return throttled
 }
 
 // take ref: https://www.youtube.com/watch?v=VDKMODA168A
