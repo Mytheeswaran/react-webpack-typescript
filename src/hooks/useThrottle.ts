@@ -2,14 +2,19 @@ import { useEffect, useState, useRef } from 'react'
 
 export function useThrottle(input: any, delay: number) {
   const [throttled, setThrottled] = useState('')
-  const lastExecuted = useRef(Date.now()) // check Date.now is giving false ms check on date function
-  console.log('diff', Date.now() - lastExecuted.current)
+  const lastExecuted = useRef(new Date())
 
-  // if (Date.now() - lastExecuted.current > delay) {
-  //   setThrottled(input)
-  //   // lastExecuted.current = Date.now()
-  // }
-  // return throttled
+  useEffect(() => {
+    const now = new Date()
+    const diff = now.getTime() - lastExecuted.current.getTime()
+    if (diff > delay) {
+      setThrottled(input) // need to check the last elements are not printing
+      lastExecuted.current = new Date()
+    }
+  }, [input, delay])
+
+  return throttled
 }
 
-// take ref: https://www.youtube.com/watch?v=VDKMODA168A
+// ref: https://www.youtube.com/watch?v=VDKMODA168A
+// Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.: https://prathapreddy-mudium.medium.com/react-js-react-dom-development-js-16317-5000c75a64e7

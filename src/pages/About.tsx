@@ -6,7 +6,7 @@ import { useThrottle } from '../hooks/useThrottle'
 export const About = () => {
   const [defaultInput, setDefaultInput] = useState<string>('')
   const debouncedInput = useDebounce(defaultInput, 1000)
-  const throttledInput = useThrottle(defaultInput, 1000)
+  const throttledInput = useThrottle(defaultInput, 2000)
 
   const handleChange = (e) => {
     setDefaultInput(e.target.value)
