@@ -1,10 +1,15 @@
 pipeline{
     agent any
     stages {
-        stage('Build') {
+        stage('Checkout code') {
             steps {
-                sh 'docker ps'
+                checkout scm
             }
         }
+        // stage('Build') {
+        //     steps {
+        //         sh 'docker ps'
+        //     }
+        // }
     }
 }
