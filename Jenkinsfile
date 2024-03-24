@@ -5,15 +5,14 @@ pipeline{
             steps {
                 sh '[ -d my-app ] || mkdir my-app'
                 sh 'cd my-app'
-                sh 'pwd'
                 checkout scm
                 sh 'ls -a'
             }
         }
-        // stage('Check current Directory') {
-        //     steps {
-        //         sh 'pwd'
-        //     }
-        // }
+        stage('Build Docker image') {
+            steps {
+                sh 'docker build -f Dockerfile -t nginx-jenkins-image:0.1 .'
+            }
+        }
     }
 }
