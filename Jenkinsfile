@@ -5,13 +5,14 @@ pipeline{
             steps {
                 sh 'mkdir my-app'
                 sh 'cd my-app'
+                sh 'pwd'
                 checkout scm
             }
         }
-        stage('Check current Directory') {
-            steps {
-                sh 'pwd'
-            }
-        }
+        // stage('Check current Directory') {
+        //     steps {
+        //         sh 'pwd'
+        //     }
+        // }
     }
 }
