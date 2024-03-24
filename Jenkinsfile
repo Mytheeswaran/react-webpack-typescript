@@ -3,7 +3,7 @@ pipeline{
     stages {
         stage('Checkout code') {
             steps {
-                sh 'mkdir my-app'
+                sh '[ -d my-app ] || mkdir my-app'
                 sh 'cd my-app'
                 sh 'pwd'
                 checkout scm
