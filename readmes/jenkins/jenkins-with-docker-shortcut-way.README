@@ -1,0 +1,51 @@
+1. Install Docker in Jenkins Container manually using container interactive
+
+	url: https://faun.pub/how-to-install-docker-in-jenkins-container-4c49ba40b373
+
+	Install docker and provide permissions using container interactive: 
+        docker exec -it --user root <container_id> bash
+
+    Issue: When restarting/recreating jenkins container, the docker and docker related permissions will be lost and need to 
+    reinstall docker by getting in to the container as root --user root and install from container shell manually. 
+    Note: sudo permissions will not work inside container if tried from docker desktop.
+        command: docker exec -it --user root 8b03ec1ca67126d8b5bb636d4bcdea2bcc203a21e9bc87b8fcc8e3bea174daab bash
+
+    Refer Install docker in Jenkins container short way.txt in our laptop.
+
+2. Ways of pipeline to build docker image from jenkins - Cloud Bees
+	https://www.youtube.com/watch?v=ymI02j-hqpU
+
+3. Pipeline script:
+    pipeline{
+        agent any
+        stages {
+            stage('Checkout code') {
+                steps {
+                    sh '[ -d my-app ] || mkdir my-app'
+                    sh 'cd my-app'
+                    checkout scm
+                    sh 'ls -a'
+                }
+            }
+            stage('Build Docker image') {
+                steps {
+                    sh 'docker build -f Dockerfile -t nginx-jenkins-image:0.2 .'
+                }
+            }
+            stage('Run Docker image') {
+                steps {
+                    sh 'docker run -it --rm -d -p 3000:80 --name my-nginx-container  nginx-jenkins-image:0.2'
+                }
+            }
+        }
+    }
+
+4. Pipeline with agent { dockerfile true }
+    Refer: Cloud Bees - https://www.youtube.com/watch?v=ymI02j-hqpU
+        https://github.com/darinpope/jenkins-example-docker/blob/main/Jenkinsfile-3
+
+5. Misc:
+    Configuring agents with Docker
+        Using Jenkins agents with ssh connection: https://www.jenkins.io/doc/book/using/using-agents/
+
+
