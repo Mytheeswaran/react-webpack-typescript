@@ -11,7 +11,12 @@ pipeline{
         }
         stage('Build Docker image') {
             steps {
-                sh 'docker build -f Dockerfile -t nginx-jenkins-image:0.1 .'
+                sh 'docker build -f Dockerfile -t nginx-jenkins-image:0.2 .'
+            }
+        }
+        stage('Run Docker image') {
+            steps {
+                sh 'docker run -it --rm -d -p 3000:80 --name my-nginx-container  nginx-jenkins-image:0.2'
             }
         }
     }
