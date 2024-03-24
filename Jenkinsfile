@@ -3,13 +3,15 @@ pipeline{
     stages {
         stage('Checkout code') {
             steps {
+                sh 'mkdir my-app'
+                sh 'cd my-app'
                 checkout scm
             }
         }
-        // stage('Build') {
-        //     steps {
-        //         sh 'docker ps'
-        //     }
-        // }
+        stage('Check current Directory') {
+            steps {
+                sh 'pwd'
+            }
+        }
     }
 }
