@@ -7,6 +7,7 @@ pipeline{
                 sh 'cd my-app'
                 sh 'pwd'
                 checkout scm
+                sh 'ls -a'
             }
         }
         // stage('Check current Directory') {
