@@ -1,41 +1,23 @@
 pipeline{
-    agent{
-        node {
-            DOCKER_HOME = tool "docker"
-            sh """
-                echo $DOCKER_HOME
-                ls $DOCKER_HOME/bin/
-                $DOCKER_HOME/bin/docker images
-                $DOCKER_HOME/bin/docker ps -a
-            """
-        }
-    }
-
-    stages{
-        stage('Clone repository') {
-            steps{
+    agent any
+    stages {
+        stage('Checkout code') {
+            steps {
+                sh '[ -d my-app ] || mkdir my-app'
+                sh 'cd my-app'
                 checkout scm
+                sh 'ls -a'
             }
         }
-
-        // stage("build"){
-        //     /*https://myrestraining.com/blog/docker/how-to-build-docker-image-using-jenkins-pipeline/*/
-        //     /*https://community.jenkins.io/t/jenkins-pipeline-fails-with-docker-not-found-message/3994/2*/
-        //     /*docker compose -- https://www.cloudbees.com/blog/how-to-install-and-run-jenkins-with-docker-compose*/
-        //     /*Java techie -- https://www.youtube.com/watch?v=PKcGy9oPVXg*/
-        //     /*docker plugin is not found: https://stackoverflow.com/questions/62576978/cant-find-docker-plugin-on-jenkins*/
-        //     /*https://www.jenkins.io/doc/book/pipeline/syntax/*/
-        //     steps {
-        //         script{
-        //             sh 'docker build -t nginx-jenkins:latest .'
-        //         } 
-        //     }
-        // }
-
-        // stage("deploy"){
-        //     steps{
-        //         echo 'deploying the application...'
-        //     }
-        // }
+        stage('Build Docker image') {
+            steps {
+                sh 'docker build -f Dockerfile -t nginx-jenkins-image:0.2 .'
+            }
+        }
+        stage('Run Docker image') {
+            steps {
+                sh 'docker run -it --rm -d -p 3000:80 --name my-nginx-container  nginx-jenkins-image:0.2'
+            }
+        }
     }
 }
