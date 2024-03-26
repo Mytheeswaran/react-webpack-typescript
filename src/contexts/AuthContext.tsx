@@ -45,13 +45,15 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
   const navigate = useNavigate()
 
   const loginApiCall = async (payload: Payload) => {
-    await axios.post('http://localhost:4000/auth/login', payload, {
-      withCredentials: true,
-    })
+    // await axios.post('http://localhost:4000/auth/login', payload, {
+    //   withCredentials: true,
+    // })
 
     const userResponse = await axios.get('http://localhost:4000/user-profile', {
       withCredentials: true,
     })
+
+    console.log('response from MOCK--->', userResponse)
 
     setUser(userResponse.data)
     localStorage.setItem('userProfile', JSON.stringify(userResponse.data))

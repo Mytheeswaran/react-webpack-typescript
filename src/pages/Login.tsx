@@ -9,12 +9,17 @@ export function Login(): JSX.Element {
   const password: any = useRef('')
   const { loginApiCall } = useAuthContext()
 
+  // const loginHandler = async () => {
+  //   const payload = {
+  //     email: email.current.value,
+  //     password: password.current.value,
+  //   }
+  //   await loginApiCall(payload)
+  // }
+
   const loginHandler = async () => {
-    const payload = {
-      email: email.current.value,
-      password: password.current.value,
-    }
-    await loginApiCall(payload)
+    const movies = await fetch('/movies').then((res) => res.json())
+    console.log(movies) // [{"title": "The Godfather"}, ...]
   }
 
   return (
