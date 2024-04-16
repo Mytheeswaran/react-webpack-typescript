@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: naveen-auth-deployment
+spec:
+  selector:
+    matchLabels:
+      app: naveen-auth
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: naveen-auth
+    spec:
+      containers:
+        - name: naveen-auth
+          image: us-central1-docker.pkg.dev/ultimate-bit-416621/my-artifact-registry/naveen-auth-image:latest
+          ports:
+            - containerPort: 4000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: naveen-auth-service
+spec:
+  selector:
+    app: naveen-auth
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 4000
+  type: LoadBalancer
+# port confusions: https://stackoverflow.com/questions/63448062/difference-between-container-port-and-targetport-in-kubernetes

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-deployment
+  name: kyle-react-deployment
 spec:
   selector:
     matchLabels:
-      app: my-app
+      app: kyle-react
   replicas: 1
   template:
     metadata:
       labels:
-        app: my-app
+        app: kyle-react
     spec:
       containers:
-        - name: my-app
+        - name: kyle-react
           image: us-central1-docker.pkg.dev/ultimate-bit-416621/my-artifact-registry/sample-image:latest
           ports:
             - containerPort: 80
@@ -21,10 +21,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-service
+  name: kyle-react-service
 spec:
   selector:
-    app: my-app
+    app: kyle-react
   ports:
     - protocol: TCP
       port: 80
