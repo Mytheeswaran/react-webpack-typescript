@@ -25,11 +25,25 @@
 pipeline{
     agent any
     environment {
-        LOGIN_CREDS = 'mytheeswaran93@gmail.com'
+        registry = "mytheeswaran/my-repository"
+        registryCredential = 'docker-creds'
+        BUILD_NUMBER = 'jen'
+    }
+    stage('Building our image') {
+        steps{
+            script {
+                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+            }
+        }
     }
     stages {
-        stage('Pull Docker image') {
+        stage('Push Docker image') {
             steps {
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                    }
+                }
                 sh 'Username is $LOGIN_CREDS'
                 // sh 'docker pull mytheeswaran/my-repository:jenkins'
             }
@@ -41,3 +55,6 @@ pipeline{
         // }
     }
 }
+
+//Building Docker images to Docker Hub using Jenkins Pipelines
+// https://gcore.com/learning/building-docker-images-to-docker-hub-using-jenkins-pipelines/#:~:text=On%20Jenkins%20you%20need%20to,this%20credential%20from%20your%20scripts.
