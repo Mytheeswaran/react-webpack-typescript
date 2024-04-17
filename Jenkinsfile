@@ -24,16 +24,20 @@
 
 pipeline{
     agent any
+    environment {
+        LOGIN_CREDS = 'mytheeswaran93@gmail.com'
+    }
     stages {
         stage('Pull Docker image') {
             steps {
-                sh 'docker pull mytheeswaran/my-repository:jenkins'
+                sh 'Username is $LOGIN_CREDS'
+                // sh 'docker pull mytheeswaran/my-repository:jenkins'
             }
         }
-        stage('Run Docker image') {
-            steps {
-                sh 'docker run -it --rm -d -p 3000:80 --name jenkins-nginx-container  mytheeswaran/my-repository:jenkins'
-            }
-        }
+        // stage('Run Docker image') {
+        //     steps {
+        //         sh 'docker run -it --rm -d -p 3000:80 --name jenkins-nginx-container  mytheeswaran/my-repository:jenkins'
+        //     }
+        // }
     }
 }
