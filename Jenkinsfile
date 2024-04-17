@@ -53,7 +53,6 @@ pipeline{
                         dockerImage.push()
                     }
                 }
-                sh 'Username is $LOGIN_CREDS'
                 // sh 'docker pull mytheeswaran/my-repository:jenkins'
             }
         }
