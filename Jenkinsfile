@@ -29,14 +29,23 @@ pipeline{
         registryCredential = 'docker-creds'
         BUILD_NUMBER = 'jen'
     }
-    stage('Building our image') {
-        steps{
-            script {
-                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+    stages {
+        stage('Checkout code') {
+            steps {
+                sh '[ -d my-app ] || mkdir my-app'
+                sh 'cd my-app'
+                checkout scm
+                // sh 'ls -a'
             }
         }
-    }
-    stages {
+        stage('Building our image') {
+            steps{
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
+
         stage('Push Docker image') {
             steps {
                 script {
@@ -48,11 +57,6 @@ pipeline{
                 // sh 'docker pull mytheeswaran/my-repository:jenkins'
             }
         }
-        // stage('Run Docker image') {
-        //     steps {
-        //         sh 'docker run -it --rm -d -p 3000:80 --name jenkins-nginx-container  mytheeswaran/my-repository:jenkins'
-        //     }
-        // }
     }
 }
 
