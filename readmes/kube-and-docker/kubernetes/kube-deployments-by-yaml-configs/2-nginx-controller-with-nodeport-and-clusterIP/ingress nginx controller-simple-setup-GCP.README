@@ -79,6 +79,10 @@ NAME         CLASS    HOSTS   ADDRESS         PORTS   AGE
 my-ingress   <none>   *       34.49.118.174   80      37m
 PS D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\kubectl-deployments-yaml\kubernetes-cloud-deployments\gcp> 
 
+---using Host---
+D:\React\webpack-ts-unit-auth-proj\react-webpack-typescript\kubectl-deployments-yaml\kubernetes-cloud-deployments\gcp\ingress-setup\basic-setup>kubectl get ingress
+NAME         CLASS    HOSTS           ADDRESS         PORTS   AGE
+my-ingress   <none>   myingress.com   34.49.157.223   80      2m34s
 **************************************************************Yaml configs**************************************************************
 
 apiVersion: apps/v1

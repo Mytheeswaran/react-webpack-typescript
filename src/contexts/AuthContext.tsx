@@ -45,13 +45,16 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
   const navigate = useNavigate()
 
   const loginApiCall = async (payload: Payload) => {
-    await axios.post('http://localhost:4000/auth/login', payload, {
+    await axios.post('http://mystore.com/api/auth/login', payload, {
       withCredentials: true,
     })
 
-    const userResponse = await axios.get('http://localhost:4000/user-profile', {
-      withCredentials: true,
-    })
+    const userResponse = await axios.get(
+      'http://mystore.com/api/user-profile',
+      {
+        withCredentials: true,
+      }
+    )
 
     setUser(userResponse.data)
     localStorage.setItem('userProfile', JSON.stringify(userResponse.data))
@@ -60,7 +63,7 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
 
   const logoutApiCall = async () => {
     // The purpose of calling logout API is to clear cookies in the browser automatically using withCredentials
-    await axios.get('http://localhost:4000/logout', {
+    await axios.get('http://mystore.com/api/logout', {
       withCredentials: true,
     })
 
