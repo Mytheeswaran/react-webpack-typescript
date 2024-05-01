@@ -23,3 +23,4 @@ spec:
                 name: backend-auth-service
                 port:
                   number: 80
+#  currently working for http://mystore.com/auth/login and not for http://mystore.com/api/healthCheck
