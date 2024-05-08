@@ -9,18 +9,17 @@ spec:
     - host: mystore.com
       http:
         paths:
-          # - path: /
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: frontend-service
-          #       port:
-          #         number: 80
           - path: /
             pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 80
+          - path: /api
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: backend-auth-service
                 port:
                   number: 80
-#  currently working for http://mystore.com/auth/login and not for http://mystore.com/api/healthCheck
