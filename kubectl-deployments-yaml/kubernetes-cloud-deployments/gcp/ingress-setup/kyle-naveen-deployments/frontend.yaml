@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend-app
-          image: us-central1-docker.pkg.dev/ultimate-bit-416621/my-artifact-registry/my-store-web:latest
+          image: us-central1-docker.pkg.dev/ultimate-bit-416621/my-artifact-registry/my-store-web:2.1
           ports:
             - containerPort: 80
 ---

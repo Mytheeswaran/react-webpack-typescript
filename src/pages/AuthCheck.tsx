@@ -9,7 +9,7 @@ export function AuthCheck(): JSX.Element {
     const abortController = new AbortController()
 
     jwtInterceptor // use jwtInterceptor in place of axios to intercept api requests
-      .get('http://localhost:4000/liked-movies', {
+      .get('http://mystore.com/api/liked-movies', {
         withCredentials: true,
         signal: abortController.signal,
       })

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend-auth-app
-          image: us-central1-docker.pkg.dev/ultimate-bit-416621/my-artifact-registry/naveen-auth-image:2.3
+          image: us-central1-docker.pkg.dev/ultimate-bit-416621/my-artifact-registry/naveen-auth-image:2.4
           ports:
             - containerPort: 4000
 
