@@ -23,4 +23,6 @@ What's the difference between exposing nginx as load balancer vs Ingress control
         As the ingress is L7 it is able to distinguish between myapp1.com and myapp1.com/mypath, it is able to route the traffic to the right 
         service.
 
-    Ref: https://stackoverflow.com/questions/50966300/whats-the-difference-between-exposing-nginx-as-load-balancer-vs-ingress-control
+    Ref: 
+        https://stackoverflow.com/questions/50966300/whats-the-difference-between-exposing-nginx-as-load-balancer-vs-ingress-control
+        https://docs.k0sproject.io/v1.24.4+k0s.0/examples/nginx-ingress/
