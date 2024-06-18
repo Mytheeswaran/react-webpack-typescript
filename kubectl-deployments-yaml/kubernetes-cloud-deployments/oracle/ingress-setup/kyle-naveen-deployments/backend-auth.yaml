@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-auth-deployment
+spec:
+  selector:
+    matchLabels:
+      app: backend-auth-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: backend-auth-app
+    spec:
+      containers:
+        - name: backend-auth-app
+          image: us-central1-docker.pkg.dev/ultimate-bit-416621/my-artifact-registry/naveen-auth-image:2.4
+          ports:
+            - containerPort: 4000
+
+          readinessProbe:
+            httpGet:
+              path: /api/healthCheck
+              port: 4000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /api/healthCheck
+              port: 4000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+
+          startupProbe:
+            httpGet:
+              path: /api/healthCheck
+              port: 4000
+            failureThreshold: 30
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-auth-service
+spec:
+  selector:
+    app: backend-auth-app
+  ports:
+    - port: 80
+      targetPort: 4000
