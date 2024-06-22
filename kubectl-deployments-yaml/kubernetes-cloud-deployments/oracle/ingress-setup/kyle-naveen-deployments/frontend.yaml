@@ -14,9 +14,11 @@ spec:
     spec:
       containers:
         - name: frontend-app
-          image: us-central1-docker.pkg.dev/ultimate-bit-416621/my-artifact-registry/my-store-web:2.1
+          image: ap-hyderabad-1.ocir.io/axu4lyhxbeg6/frontend-image-oracle:0.1
           ports:
             - containerPort: 80
+      imagePullSecrets:
+        - name: babu-secret
 ---
 apiVersion: v1
 kind: Service
@@ -26,4 +28,7 @@ spec:
   selector:
     app: frontend-app
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
