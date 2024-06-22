@@ -29,16 +29,3 @@ spec:
     app: frontend-app
   ports:
     - port: 80
-# ---Load Balancer svc
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: frontend-service
-# spec:
-#   selector:
-#     app: frontend-app
-#   ports:
-#     - protocol: TCP
-#       port: 80
-#       targetPort: 80
-#   type: LoadBalancer
