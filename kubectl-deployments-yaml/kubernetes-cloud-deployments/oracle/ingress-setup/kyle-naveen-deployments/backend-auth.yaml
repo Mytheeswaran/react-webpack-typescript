@@ -14,30 +14,11 @@ spec:
     spec:
       containers:
         - name: backend-auth-app
-          image: us-central1-docker.pkg.dev/ultimate-bit-416621/my-artifact-registry/naveen-auth-image:2.4
+          image: ap-hyderabad-1.ocir.io/axu4lyhxbeg6/backend-image-oracle:0.1
           ports:
             - containerPort: 4000
-
-          readinessProbe:
-            httpGet:
-              path: /api/healthCheck
-              port: 4000
-            initialDelaySeconds: 15
-            periodSeconds: 10
-
-          livenessProbe:
-            httpGet:
-              path: /api/healthCheck
-              port: 4000
-            initialDelaySeconds: 15
-            periodSeconds: 10
-
-          startupProbe:
-            httpGet:
-              path: /api/healthCheck
-              port: 4000
-            failureThreshold: 30
-            periodSeconds: 10
+      imagePullSecrets:
+        - name: babu-secret
 ---
 apiVersion: v1
 kind: Service

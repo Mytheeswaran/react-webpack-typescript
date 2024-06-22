@@ -23,9 +23,3 @@ spec:
                 name: backend-auth-service
                 port:
                   number: 80
-# metadata:  ---> Just a reference for RBAC ingress installation
-#   name: store-ingress
-#   namespace: nginx-ingress
-#   annotations:
-#     # nginx.ingress.kubernetes.io/rewrite-target: /
-#     kubernetes.io/ingress.class: 'nginx'
